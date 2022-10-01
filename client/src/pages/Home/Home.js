@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import BookDetails from "../../components/bookdetails/BookDetails";
+// import BookDetails from "../../components/bookdetails/BookDetails";
 import "../Home/Home.css";
 
 const Home = () => {

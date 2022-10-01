@@ -40,11 +40,12 @@ const Bookform = () => {
   return (
     <div className="book-form">
       <h3>Enter Book Details</h3>
-      <form className="create" onSubmit={formSubmit}>
+      <form className="create-book" onSubmit={formSubmit}>
         <input type="text" onChange={(e) => setBookTitle(e.target.value)} value={bookTitle}/><br />
         <input type="text"  onChange={(e) => setAuthorName(e.target.value)} value={authorName}/><br />
         <input type="date" onChange={(e) => setDate(e.target.value)} value={issueDate}/><br />
         <button>Add Book</button> 
+        {error && <div className="form-error">{error}</div>}
       </form>
     </div>
   );

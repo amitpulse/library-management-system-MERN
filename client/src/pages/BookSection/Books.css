@@ -1,13 +1,14 @@
 
 .book-align{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding: 2rem 5rem;
     gap: 1rem;
 }
 
 .books{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1rem;
+    row-gap: 1rem;
 }
