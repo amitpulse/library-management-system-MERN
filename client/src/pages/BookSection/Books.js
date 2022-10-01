@@ -15,6 +15,21 @@ const Books = () => {
 
   const {books, dispatch} = useBookContext();
 
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const response = await fetch('/api/books')
+      const json = await response.json()
+
+      if (response.ok) {
+        dispatch({type: 'SET_BOOKS', payload: json})
+      }
+    }
+
+    fetchBooks()
+  }, [dispatch])
+
+
+
   // const fetchBooks = async () => {
   //   const response = await axios.get('http://localhost:4400/api/books')
   //   const data = response.data;
@@ -35,19 +50,6 @@ const Books = () => {
   //   // }
     
   // }, [dispatch])
-
-  useEffect(() => {
-    const fetchBooks = async () => {
-      const response = await fetch('/api/books')
-      const json = await response.json()
-
-      if (response.ok) {
-        dispatch({type: 'SET_BOOKS', payload: json})
-      }
-    }
-
-    fetchBooks()
-  }, [dispatch])
 
 
   return (

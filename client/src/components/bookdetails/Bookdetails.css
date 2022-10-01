@@ -26,6 +26,7 @@
     /* border-radius: 1rem; */
     color: #1E1E1E;
     border: none;
+    cursor: pointer;
     background: linear-gradient(0deg, #C38FFF 0%,  #C38FFF 100%);
     transition: all 0.3s ease;
    
