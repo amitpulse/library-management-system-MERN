@@ -1,0 +1,18 @@
+
+.book-details{
+    display: flex;
+    background: teal;
+    padding: 1rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: white;
+
+}
+
+.return-btn{
+    padding: 0.5rem 1rem;
+    border: 2px white solid;
+    background: none;
+    border-radius: 0.5rem;
+    color: white;
+}

@@ -1,0 +1,44 @@
+.home-content{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5rem;
+    margin-top: 2rem;
+    height: 80vh;
+    background: rgb(129, 96, 54);
+    
+}
+
+
+
+.update-user-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: cadetblue;
+    width: 30%;
+
+}
+
+.update-user-form input, .update-user-form textarea{
+    width: 80%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: none;
+    
+
+}
+
+.update-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.update-btn button{
+    padding: 1rem 3rem;
+    border-radius: 0.5rem;
+    border: none;
+}

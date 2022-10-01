@@ -1,0 +1,17 @@
+
+.book-align{
+    display: flex;
+    justify-content: center;
+    padding: 2rem 5rem;
+    gap: 1rem;
+}
+
+.books{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.book-form{
+    background-color: teal;
+}
