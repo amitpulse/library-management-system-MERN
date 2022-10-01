@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext';
 import BookHistory from './pages/BookHistory/BookHistory';
 import Books from './pages/BookSection/Books';
@@ -11,10 +11,10 @@ function App() {
     <div className="App">
         <Router>
           <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/login' element={user ? <Home/> : <LogReg/>}/>
-            <Route path='books' element={<Books/>}/>
-            <Route path='history' element={<BookHistory/>}/>
+            <Route path='/' element={user ? <Home/> : <Navigate to="/login" />}/>
+            <Route path='login' element={!user ? <LogReg/> : <Navigate to="/" />}/>
+            <Route path='books' element={user ? <Books/> : <Navigate to="/login"/>}/>
+            <Route path='history' element={user ? <BookHistory/> : <Navigate to="/login"/>}/>
            
           </Routes>
         </Router>
