@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../bookform/Bookform.css'
 import axios from 'axios';
 
 const Bookform = () => {
@@ -37,7 +38,7 @@ const Bookform = () => {
 
   }
   return (
-    <div>
+    <div className="book-form">
       <h3>Enter Book Details</h3>
       <form className="create" onSubmit={formSubmit}>
         <input type="text" onChange={(e) => setBookTitle(e.target.value)} value={bookTitle}/><br />

@@ -1,8 +1,12 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
+import BookDetails from "../../components/bookdetails/BookDetails";
 import "../Home/Home.css";
 
 const Home = () => {
+
+  
+
   return (
     <div className="home">
       <Navbar />
@@ -30,6 +34,8 @@ const Home = () => {
 
         <div className="books-list">
           <h2>Books in your account</h2>
+
+
         </div>
       </div>
     </div>

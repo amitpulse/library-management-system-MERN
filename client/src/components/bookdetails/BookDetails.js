@@ -10,7 +10,7 @@ const BookDetails = ({book}) => {
         <p>{book.authorName}</p>
         <p>{book.issueDate}</p>
       </div>
-      <button className='return-btn'>Return</button>
+      <button className='return-btn'><p>Return</p></button>
     </div>
   )
 }

@@ -36,7 +36,7 @@ const Books = () => {
      <Navbar />
     
       <div className="book-align">
-      <Bookform className="book-form"/>
+      <Bookform/>
         <div className="books">
           {books && books.map((book) => (
             <BookDetails key={book._id} book={book}/>

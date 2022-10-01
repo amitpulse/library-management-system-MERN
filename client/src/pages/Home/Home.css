@@ -4,7 +4,7 @@
     padding: 0 5rem;
     margin-top: 2rem;
     height: 80vh;
-    background: rgb(129, 96, 54);
+    
     
 }
 
@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: cadetblue;
+   
     width: 30%;
 
 }
