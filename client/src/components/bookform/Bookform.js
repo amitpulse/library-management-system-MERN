@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import '../bookform/Bookform.css'
-import axios from 'axios';
+import { useBookContext } from "../../hooks/useBookContext";
+
+// import axios from 'axios';
 
 const Bookform = () => {
+  const {dispatch} = useBookContext();
   const [bookTitle, setBookTitle] = useState('');
   const [authorName, setAuthorName] = useState('');
   const [issueDate, setDate] = useState('');
@@ -28,6 +31,8 @@ const Bookform = () => {
       setBookTitle('')
       setAuthorName('')
       setDate('')
+      setError(null)
+      dispatch({type: 'CREATE_BOOK', payload: json})
     }
     // const response = await axios.post('http://localhost:4400/api/books', books)
     // const data = await response.data;

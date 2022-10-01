@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import BookDetails from "../../components/bookdetails/BookDetails";
 import Bookform from "../../components/bookform/Bookform";
 import Navbar from "../../components/navbar/Navbar";
 import '../BookSection/Books.css'
-import axios from 'axios';
+// import axios from 'axios';
 import { useBookContext } from "../../hooks/useBookContext";
-import { BooksContext } from "../../context/BooksContext";
 // import { useAuthContext } from "../../hooks/useAuthContext";
 
 
@@ -14,24 +13,41 @@ const Books = () => {
   // const [books, setBooks] = useState(null);
   // const {user} = useAuthContext()
 
-  const {books, dispatch} = useBookContext(BooksContext);
+  const {books, dispatch} = useBookContext();
 
-  const fetchBooks = async () => {
-    const response = await axios.get('http://localhost:4400/api/books')
-    const data = response.data;
-      // setBooks(data);
+  // const fetchBooks = async () => {
+  //   const response = await axios.get('http://localhost:4400/api/books')
+  //   const data = response.data;
+
+  //   if (response.ok) {
+  //     dispatch({type: 'SET_BOOKS', payload: data})
+  //   }
+
+  //     // setBooks(data);
+  // }
+
+  // useEffect(()=>{
+
+  //   // if user has logged in fetch books
+
+  //   // if(user){
+  //     fetchBooks();
+  //   // }
     
-  }
+  // }, [dispatch])
 
-  useEffect(()=>{
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const response = await fetch('/api/books')
+      const json = await response.json()
 
-    // if user has logged in fetch books
+      if (response.ok) {
+        dispatch({type: 'SET_BOOKS', payload: json})
+      }
+    }
 
-    // if(user){
-      fetchBooks();
-    // }
-    
-  }, [])
+    fetchBooks()
+  }, [dispatch])
 
 
   return (
@@ -42,7 +58,7 @@ const Books = () => {
       <Bookform/>
         <div className="books">
           {books && books.map((book) => (
-            <BookDetails key={book._id} book={book}/>
+            <BookDetails book={book}  key={book._id}/>
           ))}
         </div>
       </div>

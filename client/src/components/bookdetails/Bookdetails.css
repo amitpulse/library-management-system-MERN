@@ -7,11 +7,10 @@
     justify-content: space-between;
     color: white;
     /* border-radius: 0.3rem; */
-    
-    -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
-    transition: transform 0.3s;
+    transition:  border-bottom 0.3s ease;
+    height: 150px;
+    max-height: 200px;
 
 }
 
@@ -23,11 +22,12 @@
 
 .return-btn{
     padding: 0.5rem 1rem;
-    background: #C38FFF;
+    background: #c18ffa;
     /* border-radius: 1rem; */
     color: #1E1E1E;
     border: none;
+    background: linear-gradient(0deg, #C38FFF 0%,  #C38FFF 100%);
+    transition: all 0.3s ease;
    
 }
-
 
