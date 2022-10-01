@@ -11,12 +11,15 @@
     transition:  border-bottom 0.3s ease;
     height: 150px;
     max-height: 200px;
+    /* transition: all 0.3s ease; */
 
 }
 
 .book-details:hover{
     border-bottom: 2px #C38FFF solid;
     /* transform: scale(1.03);      */
+    /* background-color: #C38FFF;
+    color: #1E1E1E; */
 }
 
 
@@ -31,4 +34,9 @@
     transition: all 0.3s ease;
    
 }
+
+/* .return-btn .book-details:hover {
+    background-color: #1E1E1E;
+
+} */
 

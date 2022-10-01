@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import BookDetails from "../../components/bookdetails/BookDetails";
 import Navbar from "../../components/navbar/Navbar";
 import { useBookContext } from "../../hooks/useBookContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
+
 import "../Home/Home.css";
 
 const Home = () => {
@@ -9,19 +11,28 @@ const Home = () => {
   // book import
 
   const {books, dispatch} = useBookContext();
+  const {user} = useAuthContext();
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await fetch('/api/books')
+      const response = await fetch('/api/books',{
+        headers:{
+          'Authorization': `Bearer ${user.token}`
+        }
+      })
       const json = await response.json()
 
       if (response.ok) {
         dispatch({type: 'SET_BOOKS', payload: json})
       }
     }
+    if(user){
 
-    fetchBooks()
-  }, [dispatch])
+      fetchBooks()
+    }
+
+   
+  }, [dispatch, user])
 
 
 

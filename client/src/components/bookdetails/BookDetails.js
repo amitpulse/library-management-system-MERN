@@ -1,14 +1,23 @@
 import React from 'react'
 import { useBookContext } from '../../hooks/useBookContext'
 import '../bookdetails/Bookdetails.css'
+import { useAuthContext } from "../../hooks/useAuthContext";
+
 
 const BookDetails = ({book}) => {
 
   const {dispatch} = useBookContext()
+  const {user} = useAuthContext();
 
   const handleDelete = async () =>{
+    if(!user){
+      return
+    }
     const response = await fetch('/api/books/' + book._id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers:{
+        'Authorization': `Bearer ${user.token}`
+      }
     })
     const json = await response.json()
     if(response.ok){

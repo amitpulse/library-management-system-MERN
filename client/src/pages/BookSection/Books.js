@@ -5,28 +5,35 @@ import Navbar from "../../components/navbar/Navbar";
 import '../BookSection/Books.css'
 // import axios from 'axios';
 import { useBookContext } from "../../hooks/useBookContext";
-// import { useAuthContext } from "../../hooks/useAuthContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 
 const Books = () => {
   // const [books, setBooks] = useState(null);
-  // const {user} = useAuthContext()
-
+  
   const {books, dispatch} = useBookContext();
+  const {user} = useAuthContext()
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await fetch('/api/books')
+      const response = await fetch('/api/books', {
+        headers:{
+          'Authorization': `Bearer ${user.token}`
+        }
+      })
       const json = await response.json()
 
       if (response.ok) {
         dispatch({type: 'SET_BOOKS', payload: json})
       }
     }
+    if(user){
 
-    fetchBooks()
-  }, [dispatch])
+      fetchBooks()
+    }
+
+  }, [dispatch, user])
 
 
 

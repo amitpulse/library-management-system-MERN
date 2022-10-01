@@ -10,7 +10,7 @@ const {getBooks, getABook, createBook, deleteBook, updateBook} = require('../con
 const router = express.Router()
 
 // require for user auth
-// router.use(requireAuth);
+router.use(requireAuth);
 
 // attaching CRUD handlers on router below
 

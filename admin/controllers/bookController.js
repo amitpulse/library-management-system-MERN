@@ -32,7 +32,7 @@ const getABook = async (req, res) => {
 // POST & CREATE a book
 const createBook = async (req, res) => {
   // add data to database
-  // const {bookTitle, authorName} = req.body;
+  // const {bookTitle, authorName, issueDate} = req.body;
   try {
     // a new book created using schema model
     const newBook = await Bookmodel.create(req.body);
