@@ -21,13 +21,8 @@ export const BooksContextProvider = ({children}) => {
         books: null
     })
 
-    // to update state first dispatch function is called and an object as an argument is passed
-    // this object should have type property
-    // second property is a payload poperty, it is the data we need to make a change
-    // dispatch({type: 'SET_BOOKS', payload:[]})
-    
     return(
-        <BooksContext.Provider value={{ ...state, dispatch }}>
+        <BooksContext.Provider value={{...state, dispatch }}>
             {children}
         </BooksContext.Provider>
     )

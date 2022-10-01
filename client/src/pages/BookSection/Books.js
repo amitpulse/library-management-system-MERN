@@ -4,19 +4,22 @@ import Bookform from "../../components/bookform/Bookform";
 import Navbar from "../../components/navbar/Navbar";
 import '../BookSection/Books.css'
 import axios from 'axios';
+import { useBookContext } from "../../hooks/useBookContext";
+import { BooksContext } from "../../context/BooksContext";
 // import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 
 const Books = () => {
-  const [books, setBooks] = useState(null);
+  // const [books, setBooks] = useState(null);
   // const {user} = useAuthContext()
+
+  const {books, dispatch} = useBookContext(BooksContext);
 
   const fetchBooks = async () => {
     const response = await axios.get('http://localhost:4400/api/books')
     const data = response.data;
-      setBooks(data);
-      console.log(data)
+      // setBooks(data);
     
   }
 
