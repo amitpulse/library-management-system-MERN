@@ -18,7 +18,12 @@ const bookSchema = new Schema({
         type: Date,
         default: Date.now(),
         required: true
-    }
-});
+    },
+    submissionDate:{
+        type: Date,
+        default: Date.now()
+    },
+   
+},{timestamps: true});
 
 module.exports = mongoose.model('Book', bookSchema);

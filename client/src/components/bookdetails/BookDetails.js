@@ -32,13 +32,17 @@ const BookDetails = ({book}) => {
   return (
     
     <div className='book-details'>
+
       <div >
         <p><strong>{book.bookTitle}</strong></p>
         <p>{book.authorName}</p>
         <p>{book.issueDate}</p>
+
         {/* <p>{formatDistanceToNow(new Date(book.issueDate), {addSuffix: true})}</p> */}
       </div>
       <button onClick={handleDelete} className='return-btn'>RETURN</button>
+
+      
     </div>
   )
 }
