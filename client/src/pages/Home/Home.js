@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BookDetails from "../../components/bookdetails/BookDetails";
 import Navbar from "../../components/navbar/Navbar";
 import { useBookContext } from "../../hooks/useBookContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 import "../Home/Home.css";
+import UserDetails from "../../components/userdetails/UserDetails";
 
 const Home = () => {
 
@@ -12,8 +13,21 @@ const Home = () => {
 
   const {books, dispatch} = useBookContext();
   const {user} = useAuthContext();
+  // const [profile, setProfile] = useState()
 
   useEffect(() => {
+    // const fetchUser = async () => {
+    //   const response = await fetch('/api/user', {
+    //     headers:{
+    //       'Authorization': `Bearer ${user.token}`
+    //     }
+    //   })
+    //   const json = await response.json()
+
+    //   if(response.ok){
+    //     setProfile(json)
+    //   }
+    // }
     const fetchBooks = async () => {
       const response = await fetch('/api/books',{
         headers:{
@@ -26,9 +40,11 @@ const Home = () => {
         dispatch({type: 'SET_BOOKS', payload: json})
       }
     }
+
     if(user){
 
       fetchBooks()
+      // fetchUser()
     }
 
    
@@ -42,13 +58,8 @@ const Home = () => {
 
       <div className="home-content">
         {/* user details */}
-        <div className="user-detail">
-          <div className="user-image">
-            <img src="" alt="" />
-          </div>
-          <h4>Full Name</h4>
-
-        </div>
+        <UserDetails/>
+   
         
         {/* user form */}
         <div className="update-user-form">

@@ -8,7 +8,7 @@ import LogReg from './pages/UserAccess/LogReg';
 function App() {
   const {user} = useAuthContext();
   return (
-    <div className="App">
+    <div className="App">   
         <Router>
           <Routes>
             <Route path='/' element={user ? <Home/> : <Navigate to="/login" />}/>

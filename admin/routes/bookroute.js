@@ -2,7 +2,7 @@
 const express = require("express");
 const requireAuth = require('../middleware/requireAuth')
 
-// 
+// book controllers
 const {getBooks, getABook, createBook, deleteBook, updateBook} = require('../controllers/bookController')
 
 

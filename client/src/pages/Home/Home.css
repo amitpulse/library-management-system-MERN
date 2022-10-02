@@ -9,17 +9,6 @@
 
 }
 
-.user-detail{
-    background-color: #1D1D1D;
-    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
-}
-
-.user-image{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: white;
-}
 
 
 /* form */
