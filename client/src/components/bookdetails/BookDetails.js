@@ -3,6 +3,10 @@ import { useBookContext } from '../../hooks/useBookContext'
 import '../bookdetails/Bookdetails.css'
 import { useAuthContext } from "../../hooks/useAuthContext";
 
+//date-fns
+// import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
+
 
 const BookDetails = ({book}) => {
 
@@ -31,6 +35,7 @@ const BookDetails = ({book}) => {
       <div >
         <p><strong>{book.bookTitle}</strong></p>
         <p>{book.authorName}</p>
+        {/* <p>{formatDistanceToNow(new Date(book.issueDate), {addSuffix: true})}</p> */}
         <p>{book.issueDate}</p>
       </div>
       <button onClick={handleDelete} className='return-btn'>RETURN</button>

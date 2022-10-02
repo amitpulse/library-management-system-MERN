@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 // GET all books
 const getBooks = async (req, res) => {
-  const allBooks = await Bookmodel.find({}).sort({ createdAt: -1});
+  const allBooks = await Bookmodel.find({}).sort({createdAt: -1});
   res.status(200).json(allBooks);
 };
 

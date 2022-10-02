@@ -10,7 +10,7 @@ const requireAuth = async (req, res, next) => {
         return res.status(401).json({error: 'Authorization token needed.'})  
     }
 
-    // authorization.split requires <space></space> for tokens to split
+    // authorization.split requires <space> </space> for tokens to work
     const token = authorization.split(' ')[1]
 
     try{
