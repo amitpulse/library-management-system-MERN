@@ -7,8 +7,8 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 // import axios from 'axios';
 
 const Bookform = () => {
-  const {dispatch} = useBookContext();
   const {user} = useAuthContext();
+  const {dispatch} = useBookContext();
   
   const [bookTitle, setBookTitle] = useState('');
   const [authorName, setAuthorName] = useState('');
@@ -42,12 +42,6 @@ const Bookform = () => {
       setError(null)
       dispatch({type: 'CREATE_BOOK', payload: json})
     }
-    // const response = await axios.post('http://localhost:4400/api/books', books)
-    // const data = await response.data;
-    // setBookTitle(data)
-    // setAuthorName(data)
-    // setDate(data);
-// setup context and then come back
 
   }
   return (

@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 
 // GET all books
 const getBooks = async (req, res) => {
-  const allBooks = await Bookmodel.find({}).sort({ createdAt: -1});
+  const user_id = req.user._id
+  const allBooks = await Bookmodel.find({user_id}).sort({ createdAt: -1});
   res.status(200).json(allBooks);
 };
 
@@ -32,8 +33,9 @@ const getABook = async (req, res) => {
 // POST & CREATE a book
 const createBook = async (req, res) => {
   // add data to database
-  // const {bookTitle, authorName, issueDate} = req.body;
+  // const {bookTitle, authorName, issueDate, user_id} = req.body;
   try {
+    // const user_id = req.user._id;
     // a new book created using schema model
     const newBook = await Bookmodel.create(req.body);
     res.status(200).json(newBook);
@@ -47,13 +49,13 @@ const createBook = async (req, res) => {
 // DELETE a book
 const deleteBook = async (req, res) => {
   const { id } = req.params;
-
+ 
   // checks whether id is valid or not
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such book found!" });
   }
 
-  const deleteOneBook = await Bookmodel.findOneAndDelete({ _id: id });
+  const deleteOneBook = await Bookmodel.findOneAndDelete({_id: id});
 
   if (!deleteOneBook) {
     return res.status(404).json({ error: "Book not available." });

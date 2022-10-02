@@ -14,7 +14,7 @@ const BookDetails = ({book}) => {
       return
     }
     const response = await fetch('/api/books/' + book._id, {
-      method: 'POST',
+      method: 'DELETE',
       headers:{
         'Authorization': `Bearer ${user.token}`
       }
