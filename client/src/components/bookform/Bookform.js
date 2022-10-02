@@ -57,7 +57,7 @@ const Bookform = () => {
         <input type="text" onChange={(e) => setBookTitle(e.target.value)} value={bookTitle} placeholder="Book Name"/><br />
         <input type="text"  onChange={(e) => setAuthorName(e.target.value)} value={authorName} placeholder="Author Name"/><br />
         <input type="date" onChange={(e) => setDate(e.target.value)} value={issueDate}/><br />
-        <button>Add Book</button> 
+        <button type="submit">Add Book</button> 
         {error && <div className="form-error">{error}</div>}
       </form>
     </div>

@@ -26,7 +26,7 @@ export const BooksContextProvider = ({children}) => {
     })
 
     return(
-        <BooksContext.Provider value={{...state, dispatch }}>
+        <BooksContext.Provider value={{...state, dispatch}}>
             {children}
         </BooksContext.Provider>
     )

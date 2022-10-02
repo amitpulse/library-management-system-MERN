@@ -10,7 +10,6 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 const Books = () => {
-  // const [books, setBooks] = useState(null);
   
   const {books, dispatch} = useBookContext();
   const {user} = useAuthContext()
@@ -33,31 +32,7 @@ const Books = () => {
       fetchBooks()
     }
 
-  }, [dispatch, user])
-
-
-
-  // const fetchBooks = async () => {
-  //   const response = await axios.get('http://localhost:4400/api/books')
-  //   const data = response.data;
-
-  //   if (response.ok) {
-  //     dispatch({type: 'SET_BOOKS', payload: data})
-  //   }
-
-  //     // setBooks(data);
-  // }
-
-  // useEffect(()=>{
-
-  //   // if user has logged in fetch books
-
-  //   // if(user){
-  //     fetchBooks();
-  //   // }
-    
-  // }, [dispatch])
-
+  }, [user, dispatch])
 
   return (
     <div className="books-section">
