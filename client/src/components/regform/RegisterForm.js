@@ -8,9 +8,8 @@ const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [studentID, setStudentID] = useState('');
-  const [contactNum, setContactNum] = useState('');
   const [department, setDepartment] = useState('');
-  const [year, setYear] = useState('');
+  // const [year, setYear] = useState('');
 
   // useSignup hook
   const {signup, error, isLoading} = useSignup();
@@ -30,9 +29,8 @@ const RegisterForm = () => {
             <input type="email" placeholder='Email'  onChange={(e) => setEmail(e.target.value)} value={email}/><br />
             <input type="password" placeholder='Password'  onChange={(e) => setPassword(e.target.value)} value={password}/><br />
             <input type="number" placeholder='Student ID'  onChange={(e) => setStudentID(e.target.value)} value={studentID}/><br />
-            <input type="tel" placeholder='Contact Number'   onChange={(e) => setContactNum(e.target.value)} value={contactNum}/><br />
             <input type="text"  placeholder='Department'   onChange={(e) => setDepartment(e.target.value)} value={department}/><br />
-            <input type="date"  placeholder='Year'   onChange={(e) => setYear(e.target.value)} value={year}/><br />
+            {/* <input type="date"  placeholder='Year'   onChange={(e) => setYear(e.target.value)} value={year}/><br /> */}
             {error && <div className='error'>{error}</div>}
 
             <button disabled={isLoading}>Register</button>

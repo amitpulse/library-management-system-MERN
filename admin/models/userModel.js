@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username:{
         type: String,
-        // required: true
+        required: true
     },
     email:{
         type: String,
@@ -20,7 +20,7 @@ const userSchema = new Schema({
     },
     studentID:{
         type: Number,
-        // required: true
+        required: true
     },
     contactNum:{
         type: Number,
@@ -53,10 +53,10 @@ const userSchema = new Schema({
 
 //  static signup
 
-userSchema.statics.signup = async function(email, password){
+userSchema.statics.signup = async function(username, email, password, studentID, department){
 
     // email password validation
-    if(!email || !password){
+    if(!email || !password ){
         throw Error("All fields are required!")
     }
     if(!validator.isEmail(email)){
@@ -74,7 +74,7 @@ userSchema.statics.signup = async function(email, password){
 
     // const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, 12)
-    const user = await this.create({email, password: hash})
+    const user = await this.create({username, email, password: hash, studentID, department})
     // const user = await this.create({username, email, password: hash, studentID, contactNumm, department, year})
 
     return user;

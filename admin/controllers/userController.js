@@ -29,16 +29,16 @@ const loginUser = async (req, res) => {
 // signup user
 
 const signupUser = async (req, res) => {
-  const {username, email, password, studentID, contactNum,  department, year } = req.body;
+  const {username, email, password, studentID,  department } = req.body;
 
   try {
-    const user = await User.signup(username, email, password, studentID, contactNum, department, year);
+    const user = await User.signup(username, email, password, studentID, department);
     
     // creating web token
     const token = createToken(user._id)
 
     // user is passed back as a token
-    res.status(200).json({username, email, studentID, contactNum, department, year, token });
+    res.status(200).json({username, email,token, studentID, department });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -47,5 +47,5 @@ const signupUser = async (req, res) => {
 
 module.exports = {
   loginUser,
-  signupUser,
+  signupUser
 };
