@@ -30,6 +30,13 @@
 
 }
 
+div.form-error{
+    padding: 1rem;
+    background:white;
+    border: 1px red solid;
+    margin: 1rem 0;
+}
+
 input.form-error{
     border: 1px red solid;
 }

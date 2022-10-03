@@ -14,6 +14,7 @@ const Bookform = () => {
   const [authorName, setAuthorName] = useState('');
   const [issueDate, setDate] = useState('');
   const [error, setError] = useState(null)
+  const [emptyField, setEmptyFields] = useState([]);
   
   
   const books = {bookTitle, authorName, issueDate}
@@ -33,14 +34,17 @@ const Bookform = () => {
       }
     })
     const json = response.json();
-    if(!response.ok){
+    if(json.error){
       setError(json.error)
+
+      setEmptyFields(json.emptyField)
     }
     if(response.ok){
       setBookTitle('')
       setAuthorName('')
       setDate('')
       setError(null)
+      setEmptyFields([])
       dispatch({type: 'CREATE_BOOK', payload: json})
     }
 
@@ -49,9 +53,27 @@ const Bookform = () => {
     <div className="book-form">
       <h3>Enter Book Details</h3>
       <form className="create-book" onSubmit={formSubmit}>
-        <input type="text" onChange={(e) => setBookTitle(e.target.value)} value={bookTitle} placeholder="Book Name"/><br />
-        <input type="text"  onChange={(e) => setAuthorName(e.target.value)} value={authorName} placeholder="Author Name"/><br />
-        <input type="date" onChange={(e) => setDate(e.target.value)} value={issueDate}/><br />
+
+        <input type="text"
+        onChange={(e) => setBookTitle(e.target.value)}
+        className={emptyField.includes('bookTitle') ? 'form-error' : ''}
+        value={bookTitle} placeholder="Book Name"
+        />
+        
+        <br />
+
+        <input type="text"  
+        onChange={(e) => setAuthorName(e.target.value)}
+        className={emptyField.includes('authorName') ? 'form-error' : ''}
+        value={authorName} placeholder="Author Name"/>
+        <br />
+
+        <input type="date" 
+        onChange={(e) => setDate(e.target.value)}
+        className={emptyField.includes('issueDate') ? 'form-error' : ''}
+        value={issueDate}/>
+        <br />
+
         <button type="submit">Add Book</button> 
         {error && <div className="form-error">{error}</div>}
       </form>

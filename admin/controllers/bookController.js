@@ -35,23 +35,23 @@ const createBook = async (req, res) => {
   // add data to database
   const {bookTitle, authorName, issueDate} = req.body;
 
-  // let emptyField = [];
+  let emptyField = [];
 
-  // if(!bookTitle){
-  //   emptyField.push('Book Title')
-  // }
+  if(!bookTitle){
+    emptyField.push('bookTitle')
+  }
 
-  // if(!authorName){
-  //   emptyField.push('Author Name')
-  // }
+  if(!authorName){
+    emptyField.push('authorName')
+  }
 
-  // if(!issueDate){
-  //   emptyField.push('Date')
-  // }
+  if(!issueDate){
+    emptyField.push('issueDate')
+  }
 
-  // if(emptyField.length > 0){
-  //   return res.status(400).json({error: 'All fields required.', emptyField})
-  // }
+  if(emptyField.length > 0){
+    return res.status(400).json({error: 'All fields required.', emptyField})
+  }
 
   try {
     // const user_id = req.user._id;

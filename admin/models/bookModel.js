@@ -16,7 +16,6 @@ const bookSchema = new Schema({
     },
     issueDate:{
         type: Date,
-        default: Date.now(),
         required: true
     }
 });
