@@ -24,15 +24,15 @@ const userSchema = new Schema({
     },
     contactNum:{
         type: Number,
-        // required: true
+        required: true
     },
     department:{
         type: String,
-        // required: true
+        required: true
     },
     year:{
         type: Date,
-        // required: true
+        required: true
     },
     admission:{
         type: String
