@@ -33,11 +33,30 @@ const getABook = async (req, res) => {
 // POST & CREATE a book
 const createBook = async (req, res) => {
   // add data to database
-  // const {bookTitle, authorName, issueDate, user_id} = req.body;
+  const {bookTitle, authorName, issueDate} = req.body;
+
+  // let emptyField = [];
+
+  // if(!bookTitle){
+  //   emptyField.push('Book Title')
+  // }
+
+  // if(!authorName){
+  //   emptyField.push('Author Name')
+  // }
+
+  // if(!issueDate){
+  //   emptyField.push('Date')
+  // }
+
+  // if(emptyField.length > 0){
+  //   return res.status(400).json({error: 'All fields required.', emptyField})
+  // }
+
   try {
     // const user_id = req.user._id;
-    // a new book created using schema model
-    const newBook = await Bookmodel.create(req.body);
+    // const newBook = await Bookmodel.create(req.body);
+    const newBook = await Bookmodel.create({bookTitle, authorName, issueDate});
     res.status(200).json(newBook);
   } catch (error) {
     res.status(400).json({ error: error.message });
