@@ -17,7 +17,8 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-   await signup(email, password)
+
+   await signup(userName, email, password, studentID, department)
   }
   return (
     <div className='register'>
