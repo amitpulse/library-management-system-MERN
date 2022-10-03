@@ -8,8 +8,8 @@ export const useSignup = () => {
     
 
     const signup = async (username, email, password, studentID, department) => {
-        setIsLoading(true);
         setError(null);
+        setIsLoading(true);
 
         const response = await fetch('/api/user/signup', {
             method: 'POST',
@@ -20,8 +20,8 @@ export const useSignup = () => {
         const json = await response.json()
 
         if(!response.ok){
-            setIsLoading(false)
             setError(json.error)
+            setIsLoading(false)
         }
         if(response.ok){
             // if response is ok save user's webtokens in the locals storage

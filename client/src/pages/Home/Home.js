@@ -5,6 +5,7 @@ import { useBookContext } from "../../hooks/useBookContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 import "../Home/Home.css";
+import Student from "../../components/student/Student";
 
 const Home = () => {
 
@@ -43,11 +44,7 @@ const Home = () => {
       <div className="home-content">
         {/* user details */}
         <div className="user-detail">
-          <div className="user-image">
-            <img src="" alt="" />
-          </div>
-          <h4>Full Name</h4>
-
+          <Student/>
         </div>
         
         {/* user form */}

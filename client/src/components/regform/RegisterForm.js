@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSignup } from '../../hooks/useSignup';
 
 const RegisterForm = () => { 
-  const [username, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [studentID, setStudentID] = useState('');
@@ -25,7 +25,7 @@ const RegisterForm = () => {
         <h2>STUDENT REGISTRATION</h2>
         
         <form action="" className='reg-form' onSubmit={handleSubmit}>
-            <input type="text" placeholder='Full Name' onChange={(e) => setUsername(e.target.value)} value={username}/><br />
+            <input type="text" placeholder='Full Name' onChange={(e) => setUserName(e.target.value)} value={userName}/><br />
             <input type="email" placeholder='Email'  onChange={(e) => setEmail(e.target.value)} value={email}/><br />
             <input type="password" placeholder='Password'  onChange={(e) => setPassword(e.target.value)} value={password}/><br />
             <input type="number" placeholder='Student ID'  onChange={(e) => setStudentID(e.target.value)} value={studentID}/><br />
