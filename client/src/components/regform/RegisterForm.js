@@ -17,16 +17,14 @@ const RegisterForm = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-
-   await signup(userName, email, password, studentID, contactNum, department, year)
+   await signup(userName, email, password, studentID, contactNum, department, year )
   }
   return (
     <div className='register'>
 
         <h2>STUDENT REGISTRATION</h2>
         
-        <form action="" className='reg-form' onSubmit={handleSubmit}>
+        <form action="" className='reg-form'  onSubmit={handleSubmit}>
             <input type="text" placeholder='Full Name' onChange={(e) => setUserName(e.target.value)} value={userName}/><br />
             <input type="email" placeholder='Email'  onChange={(e) => setEmail(e.target.value)} value={email}/><br />
             <input type="password" placeholder='Password'  onChange={(e) => setPassword(e.target.value)} value={password}/><br />

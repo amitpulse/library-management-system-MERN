@@ -53,7 +53,7 @@ const Home = () => {
        <AdditionalForm/>
 
         <div className="books-list">
-          <h2>Books in your account</h2>
+          <h2>Books into your account</h2>
           <div className="home-book">
           {books && books.map((book) => (
             <BookDetails book={book}  key={book._id}/>

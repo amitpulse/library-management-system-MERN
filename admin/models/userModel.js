@@ -34,6 +34,10 @@ const userSchema = new Schema({
         type: Date,
         required: true
     },
+     photo: {
+        type: String
+     
+    },
     admission:{
         type: String
     },
@@ -53,7 +57,7 @@ const userSchema = new Schema({
 
 //  static signup
 
-userSchema.statics.signup = async function(userName, email, password, studentID, contactNum, department, year){
+userSchema.statics.signup = async function(userName, email, password, studentID, contactNum, department, year ){
 
     // email password validation
     if(!email || !password ){
