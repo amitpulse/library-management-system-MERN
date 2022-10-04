@@ -9,6 +9,11 @@ export const authReducer = (state, action) => {
             return {user: action.payload}
         case 'LOGOUT':
             return {user: null}
+        // case 'SET_USER':
+        //         return{
+        //             user: action.payload
+        //         }
+            
         default:
             return state
     }
@@ -20,7 +25,7 @@ export const AuthContextProvider = ({children}) => {
     // useEffects checks for the user data in the local storage
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'))
-
+        
         // checking whether user data exists or not
         if(user){
             dispatch({type: 'LOGIN', payload: user})

@@ -6,6 +6,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 import "../Home/Home.css";
 import Student from "../../components/student/Student";
+import AdditionalForm from "../../components/additional_form/AdditionalForm";
 
 const Home = () => {
 
@@ -13,6 +14,7 @@ const Home = () => {
 
   const {books, dispatch} = useBookContext();
   const {user} = useAuthContext();
+  // const {user, dispatch: userDispatch} = useAuthContext();
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -27,9 +29,11 @@ const Home = () => {
         dispatch({type: 'SET_BOOKS', payload: json})
       }
     }
+
     if(user){
 
       fetchBooks()
+      // fetchuser()
     }
 
    
@@ -40,32 +44,13 @@ const Home = () => {
   return (
     <div className="home">
       <Navbar />
-
       <div className="home-content">
-        {/* user details */}
         <div className="user-detail">
           <Student/>
         </div>
         
         {/* user form */}
-        <div className="update-user-form">
-          <form action="" className="extra-form-data">
-            <input type="text" placeholder="Admission" />
-            <br />
-            <input type="text" placeholder="Gender" />
-            <br />
-            <input type="text" placeholder="Blood Group" />
-            <br />
-            <input type="text" placeholder="Emergency Contact No" />
-            <br />
-            <textarea name="" id="" rows="5" placeholder="Address"></textarea>
-            <br />
-            <div className="update-btn">
-              <button>EDIT</button>
-              <button>SAVE</button>
-            </div>
-          </form>
-        </div>
+       <AdditionalForm/>
 
         <div className="books-list">
           <h2>Books in your account</h2>

@@ -29,6 +29,7 @@ const loginUser = async (req, res) => {
 // signup user
 
 const signupUser = async (req, res) => {
+
   const {userName, email, password, studentID, contactNum, department, year } = req.body;
 
   try {
