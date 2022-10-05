@@ -4,7 +4,7 @@ import '../additional_form/AdditionalForm.css'
 
 
 const AdditionalForm = () => {
-    const {user} = useAuthContext();
+    const {user, dispatch} = useAuthContext();
 
     const [admission, setAdmission] = useState('')
     const[gender, setGender] = useState('')
@@ -44,7 +44,7 @@ const AdditionalForm = () => {
             setEmergencyContact('')
             setAddress('')
             setError(null)
-            
+            dispatch({type: 'LOGIN', payload: user})
           }
 
 
