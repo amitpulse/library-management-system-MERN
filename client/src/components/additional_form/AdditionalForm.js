@@ -5,7 +5,6 @@ import '../additional_form/AdditionalForm.css'
 
 const AdditionalForm = () => {
     const {user, dispatch} = useAuthContext();
-
     const [admission, setAdmission] = useState('')
     const[gender, setGender] = useState('')
     const[bloodGroup, setBloodGroup] = useState('')
@@ -24,7 +23,7 @@ const AdditionalForm = () => {
             return
           }
 
-          const response = await fetch('/api/user/addinfo', {
+          const response = await fetch('/api/userinfo/addinfo', {
             method:'POST',
             body: JSON.stringify(additionalInfo),
             headers:{
@@ -64,11 +63,11 @@ const AdditionalForm = () => {
       <br />
       <textarea name="address" id="" rows="5" placeholder="Address" onChange={(e) => setAddress(e.target.value)} value={address}></textarea>
       <br />
-
+      <input  type="file"  name="photo" />
+      <br />
       <div className="update-btn">
-      {error && <div className="extra-form--error">{error}</div>}
-        <button type=''>EDIT</button>
         <button type='submit'>SAVE</button>
+      {error && <div className="extra-form--error">{error}</div>}
       </div>
     </form>
   </div>

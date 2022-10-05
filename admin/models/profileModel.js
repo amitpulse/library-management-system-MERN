@@ -3,9 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const userInfoSchema = new Schema({
-     photo: {
-        type: String
-    },
+ 
     admission:{
         type: String
     },
@@ -20,8 +18,11 @@ const userInfoSchema = new Schema({
     },
     address:{
         type: String
+    },
+    photo: {
+        type: String
     }
-})
+},{timestamps:true})
 
 const UserInfo = mongoose.model('User Info', userInfoSchema);
 module.exports = UserInfo;

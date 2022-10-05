@@ -1,14 +1,14 @@
 
-const UserInfo = require('../models/userInfoModel')
+const UserInfo = require('../models/profileModel')
 
 
 // addditional user input
 
 const createAdditionalInfo = async (req, res) => {
-    const {admisson, gender, bloodGroup, emergencyContact, address} = req.body;
+    const {admission, gender, bloodGroup, emergencyContact, address} = req.body;
   
     try{
-      const newUserInfo = await UserInfo.create({admisson, gender, bloodGroup, emergencyContact, address})
+      const newUserInfo = await UserInfo.create({admission, gender, bloodGroup, emergencyContact, address})
       res.status(200).json(newUserInfo);
     }
     catch(error){
