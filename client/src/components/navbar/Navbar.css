@@ -3,11 +3,9 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1F1F1F;
+    background: rgba(161, 42, 151, 0.75);
     padding: 0 5rem;
-    -webkit-box-shadow: 0px 5px 9px -3px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 5px 9px -3px rgba(0,0,0,0.75);
-box-shadow: 0px 5px 9px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 9px -3px rgba(0,0,0,0.75);
     
 }
 

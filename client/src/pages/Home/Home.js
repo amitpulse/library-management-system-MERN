@@ -29,6 +29,19 @@ const Home = () => {
       }
     }
 
+    // const fetchuser = async () => {
+    //   const response = await fetch('/api/user',{
+    //     headers:{
+    //       'Authorization': `Bearer ${user.token}`
+    //     }
+    //   })
+    //   const json = await response.json()
+
+    //   if (response.ok) {
+    //     dispatch({type: 'LOGIN', payload: json})
+    //   }
+    // }
+
     if(user){
 
       fetchBooks()

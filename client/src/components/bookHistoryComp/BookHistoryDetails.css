@@ -1,6 +1,14 @@
 .book-log{
     display: flex;
     justify-content: space-between;
-    padding: 0 5rem;
+    padding: 1rem 5rem;
     text-align: center;
+    background: #1E1E1E;
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+    transition: all 0.3s;
+    border-radius: 0.2rem;
+}
+
+.book-log:hover{
+    background: rgba(175, 71, 166, 0.75);
 }

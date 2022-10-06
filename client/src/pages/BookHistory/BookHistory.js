@@ -42,13 +42,15 @@ const BookHistory = () => {
     <div>
       <Navbar/>
 
+    <div className='history-title-container'>
       <div className='history-title'>
         <h2>Book Name</h2>
         <h2>Book Author</h2>
         <h2>Issue Date</h2>
       </div>
+    </div>
       
-      <div>
+      <div className='book-history-template'>
         {books && books.map((book) =>(
 
           <BookHistoryDetails book={book} key={book._id}/>
