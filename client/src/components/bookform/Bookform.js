@@ -24,7 +24,7 @@ const Bookform = () => {
       setError('You need to be logged in to see this page!')
       return
     }
-    const response = await fetch('/api/books', {
+    const response = await fetch('/api/books',  {
       method:'POST',
       body: JSON.stringify(books),
       headers:{
@@ -32,6 +32,15 @@ const Bookform = () => {
         'Authorization': `Bearer ${user.token}`
       }
     })
+    const sendata = await fetch('/api/history',  {
+      method:'POST',
+      body: JSON.stringify(books),
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
+
     const json = response.json();
     if(json.error){
       setError(json.error)
@@ -39,6 +48,21 @@ const Bookform = () => {
       setEmptyFields(json.emptyField)
     }
     if(response.ok){
+      setBookTitle('')
+      setAuthorName('')
+      setDate('')
+      setError(null)
+      setEmptyFields([])
+      dispatch({type: 'CREATE_BOOK', payload: json})
+    }
+
+    const data = sendata.json();
+    if(data.error){
+      setError(data.error)
+
+      setEmptyFields(data.emptyField)
+    }
+    if(sendata.ok){
       setBookTitle('')
       setAuthorName('')
       setDate('')

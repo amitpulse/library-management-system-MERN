@@ -3,7 +3,6 @@ import BookDetails from "../../components/bookdetails/BookDetails";
 import Navbar from "../../components/navbar/Navbar";
 import { useBookContext } from "../../hooks/useBookContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
-
 import "../Home/Home.css";
 import Student from "../../components/student/Student";
 import AdditionalForm from "../../components/additional_form/AdditionalForm";
