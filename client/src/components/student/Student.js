@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import '../student/Student.css'
-import ProfilePic from "../profile_pic/ProfilePic";
 
 
 const Student = () => {
-  const {user} = useAuthContext()
+  const {user, dispatch} = useAuthContext()
+
+  useEffect(() => {
+    const fetchuser = async () => {
+      const response = await fetch('/api/user',{
+        headers:{
+          'Authorization': `Bearer ${user.token}`
+        }
+      })
+      const json = await response.json()
+
+      if (response.ok) {
+        dispatch({type: 'LOGIN', payload: json})
+      }
+    }
+
+    if(user){
+      
+      fetchuser()
+    }
+  }, [user, dispatch])
 
   return (
 
@@ -13,7 +32,7 @@ const Student = () => {
       <div className="user-image">
         <img src="" alt="" />
       </div>
-      <ProfilePic/>
+
         <h4>Full Name : <span>{user.userName}</span></h4>
         <h4>Email : <span>{user.email}</span></h4>
         <h4>Student ID : <span>{user.studentID}</span></h4>

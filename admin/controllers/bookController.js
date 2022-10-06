@@ -34,7 +34,6 @@ const getABook = async (req, res) => {
 const createBook = async (req, res) => {
   // add data to database
   const {bookTitle, authorName, issueDate} = req.body;
-
   let emptyField = [];
 
   if(!bookTitle){
@@ -54,9 +53,9 @@ const createBook = async (req, res) => {
   }
 
   try {
-    // const user_id = req.user._id;
+  const user_id = req.user._id;
     // const newBook = await Bookmodel.create(req.body);
-    const newBook = await Bookmodel.create({bookTitle, authorName, issueDate});
+    const newBook = await Bookmodel.create({bookTitle, authorName, issueDate, user_id});
     res.status(200).json(newBook);
   } catch (error) {
     res.status(400).json({ error: error.message });

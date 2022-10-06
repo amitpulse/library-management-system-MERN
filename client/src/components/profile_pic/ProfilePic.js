@@ -37,10 +37,8 @@ const ProfilePic = () => {
           if(json.error){
             setError(json.error)
           }
-          
+
     }
-
-
 
   return (
     <div>

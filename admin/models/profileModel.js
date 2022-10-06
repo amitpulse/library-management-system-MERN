@@ -18,9 +18,6 @@ const userInfoSchema = new Schema({
     },
     address:{
         type: String
-    },
-    photo: {
-        type: String
     }
 },{timestamps:true})
 

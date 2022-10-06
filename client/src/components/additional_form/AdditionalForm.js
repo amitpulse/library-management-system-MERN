@@ -10,15 +10,15 @@ const AdditionalForm = () => {
     const[bloodGroup, setBloodGroup] = useState('')
     const[emergencyContact, setEmergencyContact] = useState('')
     const[address, setAddress] = useState('')
+    const[photo, setPhoto] = useState('')
     const [error, setError] = useState(null);
 
-    const additionalInfo = {admission, gender, bloodGroup, emergencyContact, address}
+    const additionalInfo = {admission, gender, bloodGroup, emergencyContact, address, photo}
 
 
     const formSubmit = async (e) =>{
         e.preventDefault();
-
-        if(!user){
+         if(!user){
             setError('You need to be logged in to see this page!')
             return
           }
@@ -42,6 +42,7 @@ const AdditionalForm = () => {
             setBloodGroup('')
             setEmergencyContact('')
             setAddress('')
+            setPhoto('')
             setError(null)
             dispatch({type: 'LOGIN', payload: user})
           }
@@ -50,7 +51,7 @@ const AdditionalForm = () => {
         }
 
   return (
-    <div className="update-user-form">
+    <div className="update-user-form" encType="multipart/form-data">
     <form action="" className="extra-form-data" onSubmit={formSubmit}>
    
       <input type="text" name='admission' placeholder="Admission" onChange={(e) => setAdmission(e.target.value)} value={admission}/>
@@ -63,8 +64,7 @@ const AdditionalForm = () => {
       <br />
       <textarea name="address" id="" rows="5" placeholder="Address" onChange={(e) => setAddress(e.target.value)} value={address}></textarea>
       <br />
-      <input  type="file"  name="photo" />
-      <br />
+      
       <div className="update-btn">
         <button type='submit'>SAVE</button>
       {error && <div className="extra-form--error">{error}</div>}

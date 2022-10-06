@@ -2,10 +2,10 @@ import React from 'react'
 import '../navbar/Navbar.css'
 import { Link } from "react-router-dom";
 import { useLogout } from '../../hooks/useLogout';
-// import { useAuthContext } from '../../hooks/useAuthContext';
 
 
 const Navbar = () => {
+
   
   const {logout} = useLogout();
   // const {user} = useAuthContext();
@@ -22,9 +22,8 @@ const Navbar = () => {
         <Link to="/">Home</Link>
         <Link to="/books">Books</Link>
         <Link to="/history">History</Link>
-        
         <div>
-
+          
           {/* <span>{user.email}</span> */}
          <Link to="/login" onClick={handleClick}>Log Out</Link>
  

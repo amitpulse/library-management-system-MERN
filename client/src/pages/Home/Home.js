@@ -46,11 +46,11 @@ const Home = () => {
       <Navbar />
       <div className="home-content">
         <div className="user-detail">
-          <Student />
+          <Student/>
         </div>
         
         {/* user form */}
-       <AdditionalForm/>
+       <AdditionalForm user={user}/>
 
         <div className="books-list">
           <h2>Books into your account</h2>
