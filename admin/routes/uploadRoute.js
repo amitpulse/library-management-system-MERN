@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {getImage, postImage, upload} = require('../controllers/uploadController')
 
-router.get("/", getImage);
+router.get("/upload", getImage);
 
 router.post('/upload', postImage, upload)
 

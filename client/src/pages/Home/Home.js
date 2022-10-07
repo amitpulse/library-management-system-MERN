@@ -30,7 +30,8 @@ const Home = () => {
     }
 
     // const fetchuser = async () => {
-    //   const response = await fetch('/api/user',{
+    //   const response = await fetch('/api/user/login',{
+    //     method: 'GET',
     //     headers:{
     //       'Authorization': `Bearer ${user.token}`
     //     }
@@ -58,7 +59,8 @@ const Home = () => {
       <Navbar />
       <div className="home-content">
         <div className="user-detail">
-          <Student/>
+          <Student user={user}/>
+        
         </div>
         
         {/* user form */}

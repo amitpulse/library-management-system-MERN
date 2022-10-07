@@ -18,7 +18,11 @@ const userInfoSchema = new Schema({
     },
     address:{
         type: String
-    }
+    },
+    // user_id:{
+    //     type: String,
+    //     required: true
+    // }
 },{timestamps:true})
 
 const UserInfo = mongoose.model('User Info', userInfoSchema);

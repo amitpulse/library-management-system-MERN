@@ -63,7 +63,6 @@ const createBook = async (req, res) => {
 };
 
 
-
 // DELETE a book
 const deleteBook = async (req, res) => {
   const { id } = req.params;
