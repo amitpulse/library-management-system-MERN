@@ -12,6 +12,7 @@ const bookRoutes = require('./routes/bookroute')
 const userRoutes = require('./routes/userRoute')
 const userInfoRoutes = require('./routes/userInfoRoutes')
 const historyRoute = require('./routes/historyRoute')
+const imageRoute = require('./routes/uploadRoute')
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/api/books', bookRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/userinfo', userInfoRoutes)
 app.use('/api/history', historyRoute)
+app.use('/api/image', imageRoute)
 
 
 // connect to mongoDB

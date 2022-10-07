@@ -67,9 +67,9 @@ const AdditionalForm = () => {
       
       <div className="update-btn">
         <button type='submit'>SAVE</button>
-      {error && <div className="extra-form--error">{error}</div>}
       </div>
     </form>
+      {error && <div className="extra-form--error">{error}</div>}
   </div>
   )
 };
