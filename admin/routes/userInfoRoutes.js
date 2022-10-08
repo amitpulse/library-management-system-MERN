@@ -1,9 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const requireAuth = require('../middleware/requireAuth')
 
 
 const {createAdditionalInfo, getAdditionalInfo} = require('../controllers/userInfoController')
 
+const router = express.Router();
+
+// require for user auth
+router.use(requireAuth);
 
 router.get('/addinfo', getAdditionalInfo)
 router.post('/addinfo', createAdditionalInfo)

@@ -5,16 +5,24 @@ import '../additional_form/AdditionalForm.css'
 
 const AdditionalForm = () => {
     const {user, dispatch} = useAuthContext();
+    const [isDisabled, setIsDisabled] = useState(false)
     const [admission, setAdmission] = useState('')
     const[gender, setGender] = useState('')
     const[bloodGroup, setBloodGroup] = useState('')
     const[emergencyContact, setEmergencyContact] = useState('')
     const[address, setAddress] = useState('')
-    const[photo, setPhoto] = useState('')
+    // const[photo, setPhoto] = useState('')
     const [error, setError] = useState(null);
 
-    const additionalInfo = {admission, gender, bloodGroup, emergencyContact, address, photo}
+    const additionalInfo = {admission, gender, bloodGroup, emergencyContact, address}
 
+    const handleClick = () =>{
+        setIsDisabled(true)
+    }
+
+    const handleInput = () =>{
+      setIsDisabled(false)
+    }
 
     const formSubmit = async (e) =>{
         e.preventDefault();
@@ -42,7 +50,7 @@ const AdditionalForm = () => {
             setBloodGroup('')
             setEmergencyContact('')
             setAddress('')
-            setPhoto('')
+            // setPhoto('')
             setError(null)
             dispatch({type: 'LOGIN', payload: user})
           }
@@ -54,19 +62,20 @@ const AdditionalForm = () => {
     <div className="update-user-form" encType="multipart/form-data">
     <form action="" className="extra-form-data" onSubmit={formSubmit}>
    
-      <input type="text" name='admission' placeholder="Admission" onChange={(e) => setAdmission(e.target.value)} value={admission}/>
+      <input type="text" name='admission' placeholder="Admission" disabled={isDisabled} onChange={(e) => setAdmission(e.target.value)} value={admission}/>
       <br />
-      <input type="text" name='gender' placeholder="Gender" onChange={(e) => setGender(e.target.value)} value={gender}/>
+      <input type="text" name='gender' placeholder="Gender" disabled={isDisabled} onChange={(e) => setGender(e.target.value)} value={gender}/>
       <br />
-      <input type="text" name='bloodGroup' placeholder="Blood Group" onChange={(e) => setBloodGroup(e.target.value)} value={bloodGroup}/>
+      <input type="text" name='bloodGroup' placeholder="Blood Group" disabled={isDisabled} onChange={(e) => setBloodGroup(e.target.value)} value={bloodGroup}/>
       <br />
-      <input type="number" name='emergencyContact' placeholder="Emergency Contact No" onChange={(e) => setEmergencyContact(e.target.value)} value={emergencyContact}/>
+      <input type="number" name='emergencyContact' placeholder="Emergency Contact No" disabled={isDisabled} onChange={(e) => setEmergencyContact(e.target.value)} value={emergencyContact}/>
       <br />
-      <textarea name="address" id="" rows="5" placeholder="Address" onChange={(e) => setAddress(e.target.value)} value={address}></textarea>
+      <textarea name="address" id="" rows="5" placeholder="Address" disabled={isDisabled} onChange={(e) => setAddress(e.target.value)} value={address}></textarea>
       <br />
       
       <div className="update-btn">
-        <button type='submit'>SAVE</button>
+        <button type='' onClick={handleInput}>EDIT</button>
+        <button type='submit' disabled={isDisabled} onClick={handleClick}>SAVE</button>
       </div>
     </form>
       {error && <div className="extra-form--error">{error}</div>}

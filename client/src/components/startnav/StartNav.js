@@ -5,7 +5,7 @@ import '../startnav/Startnav.css'
 const StartNav = () => {
   return (
     <div className='start-nav'>
-      <Link to='/'><h1>Logo</h1></Link>
+      <Link to='/'><h2>Logo</h2></Link>
       <h2>LIBRARY MANAGEMENT SOFTWARE</h2>
     </div>
   )
