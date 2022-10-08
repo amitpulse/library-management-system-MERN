@@ -2,7 +2,17 @@
 const UserInfo = require('../models/profileModel')
 
 
-// addditional user input
+
+// GET additonal user info
+const getAdditionalInfo = async (req, res) => {
+
+  const getExtraInfo = await UserInfo.find().sort({ createdAt: -1});
+  res.status(200).json(getExtraInfo);
+};
+
+
+
+//POST addditional user input
 
 const createAdditionalInfo = async (req, res) => {
 
@@ -20,6 +30,6 @@ const createAdditionalInfo = async (req, res) => {
 
   
   module.exports = {
-    createAdditionalInfo
-
+    createAdditionalInfo,
+    getAdditionalInfo
   }
