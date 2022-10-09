@@ -5,19 +5,28 @@ const Schema = mongoose.Schema;
 const userInfoSchema = new Schema({
  
     admission:{
-        type: String
+        type: String,
+        required: true
     },
     gender:{
-        type: String
+        type: String,
+        required: true
+
     },
     bloodGroup:{
-        type: String
+        type: String,
+        required: true
+
     },
     emergencyContact:{
-        type: Number
+        type: Number,
+        required: true
+
     },
     address:{
-        type: String
+        type: String,
+        required: true
+
     },
     user_id:{
         type: String,

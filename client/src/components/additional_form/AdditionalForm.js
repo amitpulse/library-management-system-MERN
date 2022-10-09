@@ -17,7 +17,9 @@ const AdditionalForm = () => {
     const additionalInfo = {admission, gender, bloodGroup, emergencyContact, address}
 
     const handleClick = () =>{
+      setTimeout(() => {
         setIsDisabled(true)
+      }, 200);
     }
 
     const handleInput = () =>{
@@ -74,7 +76,7 @@ const AdditionalForm = () => {
       <br />
       
       <div className="update-btn">
-        <button type='' onClick={handleInput}>EDIT</button>
+        <button type='reset' onClick={handleInput}>EDIT</button>
         <button type='submit' disabled={isDisabled} onClick={handleClick}>SAVE</button>
       </div>
     </form>

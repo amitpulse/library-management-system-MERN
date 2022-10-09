@@ -6,6 +6,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import "../Home/Home.css";
 import Student from "../../components/student/Student";
 import AdditionalForm from "../../components/additional_form/AdditionalForm";
+import AdditionalInfo from "../../components/additional_info/AdditionalInfo";
 
 const Home = () => {
 
