@@ -56,7 +56,6 @@ const AdditionalForm = () => {
       setBloodGroup("");
       setEmergencyContact("");
       setAddress("");
-      // setPhoto('')
       setError(null);
       dispatch({ type: "LOGIN", payload: user });
     }
@@ -83,6 +82,19 @@ const AdditionalForm = () => {
           value={gender}
         />
         <br />
+        {/* <select name="bloodGroup" id="" 
+         disabled={isDisabled}
+         onChange={(e) => setBloodGroup(e.target.value)}
+         value={bloodGroup}>
+          <option value={bloodGroup}>A+</option>
+          <option value={bloodGroup}>B+</option>
+          <option value={bloodGroup}>AB+</option>
+          <option value={bloodGroup}>O+</option>
+          <option value={bloodGroup}>A-</option>
+          <option value={bloodGroup}>B-</option>
+          <option value={bloodGroup}>AB-</option>
+          <option value={bloodGroup}>O-</option>
+        </select> */}
         <input
           type="text"
           name="bloodGroup"

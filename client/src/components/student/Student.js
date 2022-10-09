@@ -8,7 +8,7 @@ const Student = () => {
 
   useEffect(() => {
     const fetchuser = async () => {
-      const response = await fetch('/api/user',{
+      const response = await fetch('/api/user/:id',{
         headers:{
           'Authorization': `Bearer ${user.token}`
         }

@@ -71,9 +71,7 @@ const deleteBook = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such book found!" });
   }
-
   const deleteOneBook = await Bookmodel.findOneAndDelete({_id: id});
-
   if (!deleteOneBook) {
     return res.status(404).json({ error: "Book not available." });
   }
