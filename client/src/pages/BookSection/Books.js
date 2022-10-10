@@ -32,7 +32,7 @@ const Books = () => {
       fetchBooks()
     }
 
-  }, [user, dispatch])
+  })
 
   return (
     <div className="books-section">

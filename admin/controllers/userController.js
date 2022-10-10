@@ -57,7 +57,7 @@ const getSingleUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such user found!" });
   }
-  const singleUser = await User.findById(id);
+  const singleUser = await User.findById({_id: id}).populate("_id");
 
 
   if (!singleUser) {
