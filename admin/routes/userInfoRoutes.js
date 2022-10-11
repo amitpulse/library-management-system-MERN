@@ -2,7 +2,7 @@ const express = require('express');
 const requireAuth = require('../middleware/requireAuth')
 
 
-const {createAdditionalInfo, getAdditionalInfo} = require('../controllers/userInfoController')
+const {createAdditionalInfo, getAdditionalInfo, updateAdditionalInfo} = require('../controllers/userInfoController')
 
 const router = express.Router();
 
@@ -11,5 +11,6 @@ router.use(requireAuth);
 
 router.get('/addinfo', getAdditionalInfo)
 router.post('/addinfo', createAdditionalInfo)
+router.patch('/addinfo/:id', updateAdditionalInfo)
 
 module.exports = router;

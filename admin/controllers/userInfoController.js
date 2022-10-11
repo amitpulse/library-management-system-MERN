@@ -1,4 +1,5 @@
 
+const mongoose = require('mongoose');
 const UserInfo = require('../models/profileModel')
 
 
@@ -27,10 +28,29 @@ const createAdditionalInfo = async (req, res) => {
       res.status(400).json({error: error.message})
     }
   };
+
+  // update user info
+  const updateAdditionalInfo = async (req, res) => {
+    const {id} = req.params;
+    // const user_id = req.user._id;
+    if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(404).json({ error: "No additional user info available." });
+    }
+    const updateUserInfo = await UserInfo.findOneAndUpdate ({_id: id}, { ...req.body}, {new: true})
+    // const updateUserInfo = await UserInfo.findOneAndUpdate({id: user_id}, { ...req.body})
+
+    if(!updateUserInfo){
+    return res.status(404).json({ error: "No pervious info available." });
+
+    }
+
+    res.status(200).json(updateUserInfo);
+  };
   
 
   
   module.exports = {
     createAdditionalInfo,
-    getAdditionalInfo
+    getAdditionalInfo,
+    updateAdditionalInfo
   }

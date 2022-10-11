@@ -19,7 +19,9 @@ const loginUser = async (req, res) => {
     const token = createToken(user._id);
 
     // user is passed back as a token
-    res.status(200).json({ email, token });
+    // res.status(200).json({ email, token });
+    // res.status(200).json({ email, token });
+    res.status(200).json({ user: user, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

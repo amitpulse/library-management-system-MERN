@@ -1,30 +1,13 @@
-import React, { useEffect } from "react";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import React from "react";
+// import { useAuthContext } from "../../hooks/useAuthContext";
 import '../student/Student.css'
 
 
 const Student = () => {
-  const {user, dispatch} = useAuthContext()
-
-  useEffect(() => {
-    const fetchuser = async () => {
-      const response = await fetch('/api/user/:id',{
-        headers:{
-          'Authorization': `Bearer ${user.token}`
-        }
-      })
-      const json = await response.json()
-
-      if (response.ok) {
-        dispatch({type: 'LOGIN', payload: json})
-      }
-    }
-
-    if(user){
-      
-      fetchuser()
-    }
-  }, [user, dispatch])
+  // const {user, dispatch} = useAuthContext()
+  // const {user} = useAuthContext()
+  const fetchUser = JSON.parse(localStorage.getItem('user'))
+  const userData = fetchUser.user
 
   return (
 
@@ -33,12 +16,12 @@ const Student = () => {
         <img src="" alt="" />
       </div>
 
-        <h4>Full Name : <span>{user.userName}</span></h4>
-        <h4>Email : <span>{user.email}</span></h4>
-        <h4>Student ID : <span>{user.studentID}</span></h4>
-        <h4>Contact No : <span>{user.contactNum}</span></h4>
-        <h4>Department : <span>{user.department}</span></h4>
-        <h4>Year : <span>{user.year}</span></h4>
+        <h4>Full Name : <span>{userData.userName}</span></h4>
+        <h4>Email : <span>{userData.email}</span></h4>
+        <h4>Student ID : <span>{userData.studentID}</span></h4>
+        <h4>Contact No : <span>{userData.contactNum}</span></h4>
+        <h4>Department : <span>{userData.department}</span></h4>
+        <h4>Year : <span>{userData.year}</span></h4>
         </div>
   );
 };
