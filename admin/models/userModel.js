@@ -33,6 +33,30 @@ const userSchema = new Schema({
     year:{
         type: Date,
         required: true
+    },
+    admission:{
+        type: String,
+        default:""
+    },
+    gender:{
+        type: String,
+        default:""
+
+    },
+    bloodGroup:{
+        type: String,
+        default:""
+
+    },
+    emergencyContact:{
+        type: Number,
+        default:""
+
+    },
+    address:{
+        type: String,
+        default:""
+
     }
 })
 

@@ -3,30 +3,30 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import '../additional_info/AdditionalInfo.css'
 
 const AdditionalInfo = () => {
+  const {user} = useAuthContext();
     const [userInfo, setUserInfo] = useState(null)
-    const {user} = useAuthContext();
 
-    useEffect(() => {
-       const fetchUserInfo = async () => {
-          const response = await fetch('/api/userinfo/addinfo', {
-            headers:{
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${user.token}`
-            }
+    // useEffect(() => {
+    //    const fetchUserInfo = async () => {
+    //       const response = await fetch('/api/userinfo/addinfo', {
+    //         headers:{
+    //           'Content-Type': 'application/json',
+    //           'Authorization': `Bearer ${user.token}`
+    //         }
 
-          })
-      const json = await response.json()
+    //       })
+    //   const json = await response.json()
 
-          if(response.ok){
-            setUserInfo(json)
-          }
-        }
+    //       if(response.ok){
+    //         setUserInfo(json)
+    //       }
+    //     }
 
-        if(user){
+    //     if(user){
 
-          fetchUserInfo()
-        }
-    }, [user])
+    //       fetchUserInfo()
+    //     }
+    // }, [user])
 
 
   return (

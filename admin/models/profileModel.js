@@ -6,7 +6,7 @@ const userInfoSchema = new Schema({
  
     admission:{
         type: String,
-        required: true
+        default:""
     },
     gender:{
         type: String,
@@ -32,7 +32,7 @@ const userInfoSchema = new Schema({
         type: String,
         required: true
     }
-},{timestamps:true})
+})
 
 const UserInfo = mongoose.model('User Info', userInfoSchema);
 module.exports = UserInfo;

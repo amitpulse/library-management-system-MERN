@@ -1,13 +1,10 @@
 import React from "react";
-// import { useAuthContext } from "../../hooks/useAuthContext";
 import '../student/Student.css'
 
 
 const Student = () => {
-  // const {user, dispatch} = useAuthContext()
-  // const {user} = useAuthContext()
-  const fetchUser = JSON.parse(localStorage.getItem('user'))
-  const userData = fetchUser.user
+  const fetchUser = JSON.parse(localStorage.getItem('user'));
+  const userData = fetchUser.user;
 
   return (
 

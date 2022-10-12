@@ -20,7 +20,6 @@ const loginUser = async (req, res) => {
 
     // user is passed back as a token
     // res.status(200).json({ email, token });
-    // res.status(200).json({ email, token });
     res.status(200).json({ user: user, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -53,25 +52,29 @@ const signupUser = async (req, res) => {
   }
 };
 
-const getSingleUser = async (req, res) => {
-  const { id } = req.params;
-  // const { id } = req.user._id;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such user found!" });
-  }
-  const singleUser = await User.findById({_id: id}).populate("_id");
 
+  // update user info
+  const updateAdditionalInfo = async (req, res) => {
+    const {id} = req.params;
+    const {admission, gender, bloodGroup, emergencyContact, address} = req.body;
+    
+    if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(404).json({ error: "No additional user info available." });
+    }
+    const updateUserInfo = await User.findOneAndUpdate({_id: id}, {admission, gender, bloodGroup, emergencyContact, address}, {new: true})
 
-  if (!singleUser) {
-    return res.status(404).json({ error: "User not available!" });
-  }
+    if(!updateUserInfo){
+    return res.status(404).json({ error: "No pervious info available." });
 
-  res.status(200).json(singleUser);
-};
+    }
+
+    res.status(200).json(updateUserInfo);
+  };
+  
 
 module.exports = {
   loginUser,
   signupUser,
-  getSingleUser,
+  updateAdditionalInfo
   // createInfo
 };

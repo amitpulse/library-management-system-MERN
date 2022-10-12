@@ -1,65 +1,33 @@
 import React, { useState } from "react";
-import { useAuthContext } from "../../hooks/useAuthContext";
 import "../additional_form/AdditionalForm.css";
 
 const AdditionalForm = () => {
-  const { user, dispatch } = useAuthContext();
-  const [isDisabled, setIsDisabled] = useState(false);
+
+  const fetchUser = JSON.parse(localStorage.getItem('user'));
+  const userData = fetchUser.user;
+
   const [admission, setAdmission] = useState("");
   const [gender, setGender] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");
   const [address, setAddress] = useState("");
-  // const[photo, setPhoto] = useState('')
-  const [error, setError] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(true)
 
-  const additionalInfo = {
-    admission,
-    gender,
-    bloodGroup,
-    emergencyContact,
-    address,
-  };
+  const handleSubmit = () =>{
+    setIsDisabled(true);
+  }
 
-  const handleClick = () => {
+  const handleUpdate = () => {
     setTimeout(() => {
-      setIsDisabled(true);
+      setIsDisabled(false)
+      
     }, 200);
-  };
+  }
 
-  const handleInput = () => {
-    setIsDisabled(false);
-  };
+  const formSubmit = (e) => {
+    e.preventDefault()
 
-  const formSubmit = async (e) => {
-    e.preventDefault();
-    if (!user) {
-      setError("You need to be logged in to see this page!");
-      return;
-    }
-
-    const response = await fetch("/api/userinfo/addinfo", {
-      method: "POST",
-      body: JSON.stringify(additionalInfo),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    const json = response.json();
-    if (json.error) {
-      setError(json.error);
-    }
-    if (response.ok) {
-      setAdmission("");
-      setGender("");
-      setBloodGroup("");
-      setEmergencyContact("");
-      setAddress("");
-      setError(null);
-      dispatch({ type: "LOGIN", payload: user });
-    }
-  };
+  }
 
   return (
     <div className="update-user-form" encType="multipart/form-data">
@@ -70,7 +38,7 @@ const AdditionalForm = () => {
           placeholder="Admission"
           disabled={isDisabled}
           onChange={(e) => setAdmission(e.target.value)}
-          value={admission}
+          value={userData.admission}
         />
         <br />
         <input
@@ -79,29 +47,18 @@ const AdditionalForm = () => {
           placeholder="Gender"
           disabled={isDisabled}
           onChange={(e) => setGender(e.target.value)}
-          value={gender}
+          value={userData.gender}
         />
         <br />
-        {/* <select name="bloodGroup" id="" 
-         disabled={isDisabled}
-         onChange={(e) => setBloodGroup(e.target.value)}
-         value={bloodGroup}>
-          <option value={bloodGroup}>A+</option>
-          <option value={bloodGroup}>B+</option>
-          <option value={bloodGroup}>AB+</option>
-          <option value={bloodGroup}>O+</option>
-          <option value={bloodGroup}>A-</option>
-          <option value={bloodGroup}>B-</option>
-          <option value={bloodGroup}>AB-</option>
-          <option value={bloodGroup}>O-</option>
-        </select> */}
+
         <input
           type="text"
           name="bloodGroup"
           placeholder="Blood Group"
           disabled={isDisabled}
           onChange={(e) => setBloodGroup(e.target.value)}
-          value={bloodGroup}
+          value={userData.bloodGroup}
+          readOnly={false}
         />
         <br />
         <input
@@ -110,7 +67,7 @@ const AdditionalForm = () => {
           placeholder="Emergency Contact No"
           disabled={isDisabled}
           onChange={(e) => setEmergencyContact(e.target.value)}
-          value={emergencyContact}
+          value={userData.emergencyContact}
         />
         <br />
         <textarea
@@ -120,20 +77,20 @@ const AdditionalForm = () => {
           placeholder="Address"
           disabled={isDisabled}
           onChange={(e) => setAddress(e.target.value)}
-          value={address}
+          value={userData.address}
         ></textarea>
         <br />
 
         <div className="update-btn">
-          <button type="reset" onClick={handleInput}>
+          <button type="reset"  onClick={handleUpdate}>
             EDIT
           </button>
-          <button type="submit" disabled={isDisabled} onClick={handleClick}>
+          <button type="submit" disabled={isDisabled} onClick={handleSubmit}>
             SAVE
           </button>
         </div>
       </form>
-      {error && <div className="extra-form--error">{error}</div>}
+     <div className="extra-form--error"></div>
     </div>
   );
 };
