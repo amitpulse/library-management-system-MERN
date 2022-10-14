@@ -10,7 +10,10 @@ const Storage = multer.diskStorage({
 })
 
 const getImage = async (req, res) =>{
-    res.send("hello")
+//     const {id} = req.params;
+//     const profileImage = await uploadModel.find(id)
+//   res.status(200).json(profileImage)
+res.send("got the image")
 }
 
 const postImage = async (req, res) =>{
@@ -19,7 +22,7 @@ const postImage = async (req, res) =>{
             console.log(err);
         }else{
             const newImage = new uploadModel({
-                image : {
+                testImage : {
                     data: req.file.filename,
                     contentType: "image/png"
                 }

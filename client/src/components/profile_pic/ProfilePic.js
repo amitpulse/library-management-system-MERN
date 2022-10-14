@@ -9,10 +9,9 @@ const ProfilePic = () => {
     const [error, setError]= useState(null);
 
     
-    const handlePhoto = (e) => {
-        setProfilePic({...profilePic, photo: e.target.files[0]});
+    const uploadImage = (e) => {
+        setProfilePic({...profilePic, photo: e.target.files});
     }
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,13 +22,14 @@ const ProfilePic = () => {
     }
     
     const formData = new FormData();
-    formData.append('photo', profilePic.photo, profilePic.photo.name);
+    formData.append('testImage', profilePic.photo.name);
     
-        const response = await fetch('/api/user/userpic', {
+        const response = await fetch('/api/image/upload', {
             method:'POST',
             body: formData,
             headers:{
-              'Content-Type': 'application/json',
+              // 'Accept': 'application/json',
+              // 'Content-Type': `multipart/form-data`,
               'Authorization': `Bearer ${user.token}`
             }
           })
@@ -43,7 +43,7 @@ const ProfilePic = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <input  type="file"  name="photo" onChange={handlePhoto}/>
+      <input  type="file"  name="testImage" onChange={uploadImage}/>
               <input type="submit"/>
               {error && <div className="photo-error">{error}</div>}
       </form>

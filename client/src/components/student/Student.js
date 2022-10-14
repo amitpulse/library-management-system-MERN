@@ -1,4 +1,5 @@
 import React from "react";
+import ProfilePic from "../profile_pic/ProfilePic";
 import '../student/Student.css'
 
 
@@ -12,7 +13,8 @@ const Student = () => {
       <div className="user-image">
         <img src="" alt="" />
       </div>
-
+        <ProfilePic/>
+{/* {console.log(userData.userName)} */}
         <h4>Full Name : <span>{userData.userName}</span></h4>
         <h4>Email : <span>{userData.email}</span></h4>
         <h4>Student ID : <span>{userData.studentID}</span></h4>

@@ -32,15 +32,6 @@ const Bookform = () => {
         'Authorization': `Bearer ${user.token}`
       }
     })
-    
-    const sendata = await fetch('/api/history',  {
-      method:'POST',
-      body: JSON.stringify(books),
-      headers:{
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user.token}`
-      }
-    })
 
     const json = response.json();
     if(json.error){
@@ -57,13 +48,26 @@ const Bookform = () => {
       dispatch({type: 'CREATE_BOOK', payload: json})
     }
 
-    const data = sendata.json();
+    // ---------------HISTORY API--------------
+    
+    const send_data = await fetch('/api/history',  {
+      method:'POST',
+      body: JSON.stringify(books),
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
+
+   
+
+    const data = send_data.json();
     if(data.error){
       setError(data.error)
 
       setEmptyFields(data.emptyField)
     }
-    if(sendata.ok){
+    if(send_data.ok){
       setBookTitle('')
       setAuthorName('')
       setDate('')

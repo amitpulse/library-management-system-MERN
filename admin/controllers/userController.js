@@ -52,6 +52,21 @@ const signupUser = async (req, res) => {
   }
 };
 
+const getSingleUser = async (req, res) => {
+  const {id} = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such user found." });
+  }
+  const singleUser = await User.findById(id);
+
+  if (!singleUser) {
+    return res.status(404).json({ error: "User not available" });
+  }
+
+  res.status(200).json(singleUser);
+};
+
+
 
   // update user info
   const updateAdditionalInfo = async (req, res) => {
@@ -75,6 +90,7 @@ const signupUser = async (req, res) => {
 module.exports = {
   loginUser,
   signupUser,
+  getSingleUser,
   updateAdditionalInfo
   // createInfo
 };

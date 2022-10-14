@@ -1,53 +1,101 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+// import { useAuthContext } from "../../hooks/useAuthContext";
 import "../additional_form/AdditionalForm.css";
+import axios from "axios";
 
 const AdditionalForm = () => {
+  // const {user} = useAuthContext();
+  const fetchUser = JSON.parse(localStorage.getItem("user"));
+  const userid = fetchUser.user._id;
 
-  const fetchUser = JSON.parse(localStorage.getItem('user'));
-  const userData = fetchUser.user;
+  const [readInput, setReadInput] = useState(false);
+  // const [error, setError] = useState(null);
+  const [extraDetails, setExtraDetails] = useState("");
 
-  const [admission, setAdmission] = useState("");
-  const [gender, setGender] = useState("");
-  const [bloodGroup, setBloodGroup] = useState("");
-  const [emergencyContact, setEmergencyContact] = useState("");
-  const [address, setAddress] = useState("");
-  const [isDisabled, setIsDisabled] = useState(true)
+  const getExtraDetails = async () => {
+    const response = await axios
+      .get(`http://localhost:4400/api/user/login/${userid}`)
+      .then((res) =>{
+        setExtraDetails(res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-  const handleSubmit = () =>{
-    setIsDisabled(true);
-  }
+    // setExtraDetails(response.data);
+    console.log(response);
+  };
+
+  useEffect(() => {
+    getExtraDetails();
+  }, []);
+
+  // -------------------UPDATE INFO --------------
+  const [newDetails, setNewDetails] = useState({
+    _id: null,
+    admission: "",
+    gender: "",
+    bloodGroup: "",
+    emergencyContact: "",
+    address: "",
+  });
+
+  // console.log(newDetails);
+
+  const sendNewDetails = (e) => {
+    const { name, value } = e.target;
+    setNewDetails({
+      ...newDetails,
+      [name]: value,
+    });
+    setExtraDetails(e.target.value)
+  };
+  // Handling of form input state
+  const handleSubmit = () => {
+    setReadInput(true);
+  };
 
   const handleUpdate = () => {
-    setTimeout(() => {
-      setIsDisabled(false)
-      
-    }, 200);
-  }
+    if (readInput === true) {
+      setReadInput(false);
+    }
+  };
 
-  const formSubmit = (e) => {
-    e.preventDefault()
+  const formSubmit = async (e) => {
+    e.preventDefault();
 
-  }
+    await axios
+      .patch(`http://localhost:4400/api/user/login/${userid}`, newDetails)
+      .then((res) => {
+        console.log(res.data.message);
+        console.log(newDetails);
+      });
+
+    getExtraDetails();
+    // console.log(newDetails)
+  };
 
   return (
-    <div className="update-user-form" encType="multipart/form-data">
+    <div className="update-user-form">
       <form action="" className="extra-form-data" onSubmit={formSubmit}>
         <input
           type="text"
           name="admission"
           placeholder="Admission"
-          disabled={isDisabled}
-          onChange={(e) => setAdmission(e.target.value)}
-          value={userData.admission}
+          value={extraDetails.admission}
+          onChange={sendNewDetails}
+          readOnly={readInput}
         />
         <br />
         <input
           type="text"
           name="gender"
           placeholder="Gender"
-          disabled={isDisabled}
-          onChange={(e) => setGender(e.target.value)}
-          value={userData.gender}
+          onChange={sendNewDetails}
+          value={extraDetails.gender}
+          readOnly={readInput}
         />
         <br />
 
@@ -55,42 +103,41 @@ const AdditionalForm = () => {
           type="text"
           name="bloodGroup"
           placeholder="Blood Group"
-          disabled={isDisabled}
-          onChange={(e) => setBloodGroup(e.target.value)}
-          value={userData.bloodGroup}
-          readOnly={false}
+          onChange={sendNewDetails}
+          value={extraDetails.bloodGroup}
+          readOnly={readInput}
         />
         <br />
         <input
           type="number"
           name="emergencyContact"
           placeholder="Emergency Contact No"
-          disabled={isDisabled}
-          onChange={(e) => setEmergencyContact(e.target.value)}
-          value={userData.emergencyContact}
+          onChange={sendNewDetails}
+          value={extraDetails.emergencyContact}
+          readOnly={readInput}
         />
         <br />
         <textarea
+          type="address"
           name="address"
-          id=""
           rows="5"
           placeholder="Address"
-          disabled={isDisabled}
-          onChange={(e) => setAddress(e.target.value)}
-          value={userData.address}
+          onChange={sendNewDetails}
+          value={extraDetails.address}
+          readOnly={readInput}
         ></textarea>
         <br />
 
         <div className="update-btn">
-          <button type="reset"  onClick={handleUpdate}>
+          <button type="submit" onClick={handleUpdate}>
             EDIT
           </button>
-          <button type="submit" disabled={isDisabled} onClick={handleSubmit}>
+          <button type="submit" onClick={handleSubmit}>
             SAVE
           </button>
         </div>
       </form>
-     <div className="extra-form--error"></div>
+      <div className="extra-form--error"></div>
     </div>
   );
 };
