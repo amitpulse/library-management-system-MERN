@@ -9,7 +9,8 @@ const AdditionalForm = () => {
   const fetchUser = JSON.parse(localStorage.getItem("user"));
   const userid = fetchUser.user._id;
 
-  const [readInput, setReadInput] = useState(false);
+  const [readInput, setReadInput] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(true);
   // const [error, setError] = useState(null);
   const [extraDetails, setExtraDetails] = useState("");
 
@@ -54,13 +55,18 @@ const AdditionalForm = () => {
   };
   // Handling of form input state
   const handleSubmit = () => {
-    setReadInput(true);
+
+    setTimeout(() => {
+      setReadInput(true);
+      setIsDisabled(true)
+    }, 200);
   };
 
   const handleUpdate = () => {
     if (readInput === true) {
       setReadInput(false);
     }
+    setIsDisabled(false)
   };
 
   const formSubmit = async (e) => {
@@ -132,7 +138,7 @@ const AdditionalForm = () => {
           <button type="submit" onClick={handleUpdate}>
             EDIT
           </button>
-          <button type="submit" onClick={handleSubmit}>
+          <button type="submit" disabled={isDisabled} onClick={handleSubmit}>
             SAVE
           </button>
         </div>
