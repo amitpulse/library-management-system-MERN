@@ -1,52 +1,59 @@
 import React, { useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import '../profile_pic/ProfilePic.css'
+import axios from 'axios'
 
 const ProfilePic = () => {
 
     const {user} = useAuthContext();
-    const [profilePic, setProfilePic] = useState({photo: ''});
-    const [error, setError]= useState(null);
+    const [profilePic, setProfilePic] = useState('');
+    const [error, setError] = useState(null);
 
     
     const uploadImage = (e) => {
-        setProfilePic({...profilePic, photo: e.target.files});
+        setProfilePic(e.target.files[0]);
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if(!user){
+    const headConfig = {
+      'Content-type' : 'multipart/form-data'
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+
+      if(!user){
         setError('You need to be logged in to see this page!')
         return
+      }
 
-    }
-    
-    const formData = new FormData();
-    formData.append('testImage', profilePic.photo.name);
-    
-        const response = await fetch('/api/image/upload', {
-            method:'POST',
-            body: formData,
-            headers:{
-              // 'Accept': 'application/json',
-              // 'Content-Type': `multipart/form-data`,
-              'Authorization': `Bearer ${user.token}`
-            }
-          })
-          const json = response.json();
-          if(json.error){
-            setError(json.error)
-          }
+      const formData = new FormData();
+      formData.append('photo', profilePic);
+      
 
-    }
+      axios.post('http://localhost:4400/api/image/upload', formData, headConfig)
+           .then(res => {
+              console.log(res);
+           })
+           .catch(err => {
+              console.log(err);
+           });
+           
+  }
+
+
 
   return (
     <div>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <input  type="file"  name="testImage" onChange={uploadImage}/>
-              <input type="submit"/>
-              {error && <div className="photo-error">{error}</div>}
-      </form>
+      <form onSubmit={handleSubmit} encType='multipart/form-data'>
+            <input 
+                type="file" 
+                accept=".png, .jpg, .jpeg"
+                name="photo"
+                onChange={uploadImage}
+            />
+
+            <input type="submit"/>
+        </form>
     </div>
   )
 }

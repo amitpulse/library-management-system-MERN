@@ -1,32 +1,26 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-// import { useAuthContext } from "../../hooks/useAuthContext";
 import "../additional_form/AdditionalForm.css";
 import axios from "axios";
 
 const AdditionalForm = () => {
-  // const {user} = useAuthContext();
   const fetchUser = JSON.parse(localStorage.getItem("user"));
   const userid = fetchUser.user._id;
 
   const [readInput, setReadInput] = useState(true);
   const [isDisabled, setIsDisabled] = useState(true);
-  // const [error, setError] = useState(null);
   const [extraDetails, setExtraDetails] = useState("");
 
   const getExtraDetails = async () => {
-    const response = await axios
+       await axios
       .get(`http://localhost:4400/api/user/login/${userid}`)
       .then((res) =>{
         setExtraDetails(res.data);
-        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
 
-    // setExtraDetails(response.data);
-    console.log(response);
   };
 
   useEffect(() => {
@@ -35,7 +29,7 @@ const AdditionalForm = () => {
 
   // -------------------UPDATE INFO --------------
   const [newDetails, setNewDetails] = useState({
-    _id: null,
+    _id: "",
     admission: "",
     gender: "",
     bloodGroup: "",
@@ -135,7 +129,7 @@ const AdditionalForm = () => {
         <br />
 
         <div className="update-btn">
-          <button type="submit" onClick={handleUpdate}>
+          <button type="" onClick={handleUpdate}>
             EDIT
           </button>
           <button type="submit" disabled={isDisabled} onClick={handleSubmit}>

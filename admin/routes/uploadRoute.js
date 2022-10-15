@@ -5,6 +5,6 @@ const {getImage, postImage, upload} = require('../controllers/uploadController')
 
 router.get("/upload", getImage);
 
-router.post('/upload', postImage, upload)
+router.post('/upload', upload, postImage)
 
 module.exports = router;
