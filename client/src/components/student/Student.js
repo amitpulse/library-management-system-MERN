@@ -14,7 +14,7 @@ const Student = () => {
         <img src="" alt="" />
       </div>
         <ProfilePic/>
-{/* {console.log(userData.userName)} */}
+
         <h4>Full Name : <span>{userData.userName}</span></h4>
         <h4>Email : <span>{userData.email}</span></h4>
         <h4>Student ID : <span>{userData.studentID}</span></h4>

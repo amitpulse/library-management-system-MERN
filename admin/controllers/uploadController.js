@@ -35,7 +35,7 @@ const postImage = async (req, res) => {
         }});
     
         profilePic.save()
-               .then(() => res.json('Photo Added'))
+               .then(() => res.json('Photo Uploaded'))
                .catch(err => res.status(400).json('Error: ' + err));
     }
 

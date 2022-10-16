@@ -6,6 +6,7 @@ import axios from "axios";
 const AdditionalForm = () => {
   const fetchUser = JSON.parse(localStorage.getItem("user"));
   const userid = fetchUser.user._id;
+  console.log(userid)
 
   const [readInput, setReadInput] = useState(true);
   const [isDisabled, setIsDisabled] = useState(true);
