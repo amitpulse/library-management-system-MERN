@@ -13,8 +13,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(null);
 
 useEffect(() => {
-    const loggedUser = localStorage.getItem('user');
-    setLoggedIn(Boolean(loggedUser));
+  const loggedUser = localStorage.getItem('user');
+  setLoggedIn(Boolean(loggedUser));
   }, []);
   
   return (

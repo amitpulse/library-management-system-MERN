@@ -23,9 +23,6 @@ const LogReg = () => {
     setRegActive(false);
     setBtnStyleLogin("active-btn")
     setBtnStyleReg("default-style")
-
-
-
   }
 
 

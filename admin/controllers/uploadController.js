@@ -21,11 +21,7 @@ const fileFilter = (req, file, cb) => {
     }
 }
 
-const getImage = async (req, res) =>{
-
-res.send("got the image")
-}
-
+// ----------- UPLOAD IMAGE -------------
 const postImage = async (req, res) => {
     
         const profilePic = new uploadModel({
@@ -42,6 +38,15 @@ const postImage = async (req, res) => {
 const upload = multer({ storage, fileFilter }).single('photo')
 console.log(upload);
 
+// ---------------------- GET IMAGE ------------------------
+
+const getImage = async (req, res) =>{
+
+    const downloadImage = await uploadModel.find()
+    res.json(downloadImage)
+    res.send("got the image")
+    }
+    
 
 module.exports = {
     getImage,
