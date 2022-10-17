@@ -4,9 +4,9 @@
     align-items: center;
     justify-content: center;
     width: 450px;
-    background-color: cadetblue;
+    background: #1E1E1E;
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
     padding: 1.5rem 0;
-    border-radius: 1rem;
     gap: 1rem;
     color: white;
     
@@ -24,7 +24,6 @@
     width: 80%;
     padding: 1rem;
     border:none;
-    border-radius: 0.5rem;
     outline: none;
 }
 

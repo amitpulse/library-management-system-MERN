@@ -6,7 +6,6 @@ import axios from "axios";
 const AdditionalForm = () => {
   const fetchUser = JSON.parse(localStorage.getItem("user"));
   const userid = fetchUser.user._id;
-  console.log(userid)
 
   const [readInput, setReadInput] = useState(true);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -25,17 +24,19 @@ const AdditionalForm = () => {
   };
 
   useEffect(() => {
+
     getExtraDetails();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // -------------------UPDATE INFO --------------
   const [newDetails, setNewDetails] = useState({
-    _id: "",
-    admission: "",
-    gender: "",
-    bloodGroup: "",
-    emergencyContact: "",
-    address: "",
+    _id: null,
+    admission:"",
+    gender:"",
+    bloodGroup:"",
+    emergencyContact:"",
+    address:""
   });
 
   // console.log(newDetails);
@@ -74,7 +75,7 @@ const AdditionalForm = () => {
         console.log(newDetails);
       });
 
-    getExtraDetails();
+    // getExtraDetails();
     // console.log(newDetails)
   };
 
@@ -85,7 +86,7 @@ const AdditionalForm = () => {
           type="text"
           name="admission"
           placeholder="Admission"
-          value={extraDetails.admission}
+          value={extraDetails.admission || newDetails.admission}
           onChange={sendNewDetails}
           readOnly={readInput}
         />
@@ -94,8 +95,8 @@ const AdditionalForm = () => {
           type="text"
           name="gender"
           placeholder="Gender"
+          value={extraDetails.gender || newDetails.gender}
           onChange={sendNewDetails}
-          value={extraDetails.gender}
           readOnly={readInput}
         />
         <br />
@@ -104,8 +105,8 @@ const AdditionalForm = () => {
           type="text"
           name="bloodGroup"
           placeholder="Blood Group"
+          value={extraDetails.bloodGroup || newDetails.bloodGroup}
           onChange={sendNewDetails}
-          value={extraDetails.bloodGroup}
           readOnly={readInput}
         />
         <br />
@@ -113,8 +114,8 @@ const AdditionalForm = () => {
           type="number"
           name="emergencyContact"
           placeholder="Emergency Contact No"
+          value={extraDetails.emergencyContact || newDetails.emergencyContact}
           onChange={sendNewDetails}
-          value={extraDetails.emergencyContact}
           readOnly={readInput}
         />
         <br />
@@ -123,8 +124,8 @@ const AdditionalForm = () => {
           name="address"
           rows="5"
           placeholder="Address"
+          value={extraDetails.address || newDetails.address}
           onChange={sendNewDetails}
-          value={extraDetails.address}
           readOnly={readInput}
         ></textarea>
         <br />

@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import '../regform/Registerform.css'
 import { Link } from "react-router-dom";
 import { useSignup } from '../../hooks/useSignup';
+import {motion} from 'framer-motion'
+
 
 const RegisterForm = () => { 
+ 
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +23,10 @@ const RegisterForm = () => {
    await signup(userName, email, password, studentID, contactNum, department, year )
   }
   return (
-    <div className='register'>
+    <motion.div className='register'
+    initial={{y:50, opacity:0}}
+    animate={{y:0, opacity:1}}
+    transition={{duration:0.5}} >
 
         <h2>STUDENT REGISTRATION</h2>
         
@@ -37,10 +43,11 @@ const RegisterForm = () => {
             <button disabled={isLoading}>Register</button>
          
             <p>Already a member? <Link><strong>Log In</strong></Link></p>
+           
         </form>
         
       
-    </div>
+    </motion.div>
   )
 }
 

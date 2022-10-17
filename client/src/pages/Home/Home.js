@@ -6,75 +6,50 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import "../Home/Home.css";
 import Student from "../../components/student/Student";
 import AdditionalForm from "../../components/additional_form/AdditionalForm";
-import AdditionalInfo from "../../components/additional_info/AdditionalInfo";
 
 const Home = () => {
-
   // book import
 
-  const {books, dispatch} = useBookContext();
-  const {user} = useAuthContext();
+  const { books, dispatch } = useBookContext();
+  const { user } = useAuthContext();
   // const {user, dispatch: userDispatch} = useAuthContext();
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await fetch('/api/books',{
-        headers:{
-          'Authorization': `Bearer ${user.token}`
-        }
-      })
-      const json = await response.json()
+      const response = await fetch("/api/books", {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
 
       if (response.ok) {
-        dispatch({type: 'SET_BOOKS', payload: json})
+        dispatch({ type: "SET_BOOKS", payload: json });
       }
+    };
+
+    if (user) {
+      fetchBooks();
     }
-
-    // const fetchuser = async () => {
-    //   const response = await fetch('/api/user/login',{
-    //     method: 'GET',
-    //     headers:{
-    //       'Authorization': `Bearer ${user.token}`
-    //     }
-    //   })
-    //   const json = await response.json()
-
-    //   if (response.ok) {
-    //     dispatch({type: 'LOGIN', payload: json})
-    //   }
-    // }
-
-    if(user){
-
-      fetchBooks()
-      // fetchuser()
-    }
-
-   
-  }, [dispatch, user])
-
-
+  }, [dispatch, user]);
 
   return (
     <div className="home">
       <Navbar />
       <div className="home-content">
         <div className="user-detail">
-          <Student user={user}/>
-        
+          <Student user={user} />
         </div>
-        
+
         {/* user form */}
-       <AdditionalForm user={user}/>
+        <AdditionalForm user={user} />
 
         <div className="books-list">
-          <h2>Books into your account</h2>
+          <h2>Books in your account</h2>
           <div className="home-book">
-          {books && books.map((book) => (
-            <BookDetails book={book}  key={book._id}/>
-           
-          ))}
-        </div>
+            {books &&
+              books.map((book) => <BookDetails book={book} key={book._id} />)}
+          </div>
         </div>
       </div>
     </div>

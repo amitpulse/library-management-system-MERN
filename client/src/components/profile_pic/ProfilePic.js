@@ -30,7 +30,7 @@ const ProfilePic = () => {
       formData.append('photo', profilePic);
       
 
-      axios.post('http://localhost:4400/api/image/upload', formData, headConfig)
+      axios.post(`http://localhost:4400/api/image/upload`, formData, headConfig)
            .then(res => {
               console.log(res);
            })

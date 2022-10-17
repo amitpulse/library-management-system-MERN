@@ -1,4 +1,7 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import ProfilePic from "../profile_pic/ProfilePic";
 import '../student/Student.css'
 
@@ -7,11 +10,28 @@ const Student = () => {
   const fetchUser = JSON.parse(localStorage.getItem('user'));
   const userData = fetchUser.user;
 
+  const [profileImg, setProfileImg] = useState([])
+
+  useEffect(() => {
+    axios.get(`http://localhost:4400/api/image/upload`)
+    .then((res) =>{
+      setProfileImg(res.data);
+    })
+    .catch((err) =>{
+      console.log(err);
+    })
+  }, [])
+
   return (
 
     <div className="main-info">
       <div className="user-image">
-        <img src="" alt="" />
+        {profileImg && profileImg.map((profPic)=>{
+          const base64string = btoa(
+            String.fromCharCode(...new Uint8Array(profPic.image.data.ProfilePic))
+          )
+        return <img src={`data:img/png;base64,${base64string}`} alt="" />
+        })}
       </div>
         <ProfilePic/>
 
