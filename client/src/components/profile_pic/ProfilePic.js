@@ -4,6 +4,8 @@ import '../profile_pic/ProfilePic.css'
 import axios from 'axios'
 
 const ProfilePic = () => {
+    const fetchUser = JSON.parse(localStorage.getItem("user"));
+    const userid = fetchUser.user._id;
 
     const {user} = useAuthContext();
     const [profilePic, setProfilePic] = useState('');
@@ -30,7 +32,7 @@ const ProfilePic = () => {
       formData.append('photo', profilePic);
       
 
-      axios.post(`http://localhost:4400/api/image/upload`, formData, headConfig)
+      axios.patch(`http://localhost:4400/api/user/login/upload/${userid}`, formData, headConfig)
            .then(res => {
               console.log(res);
            })
@@ -39,9 +41,7 @@ const ProfilePic = () => {
            });
            
   }
-
-
-
+  
   return (
     <div>
       <form onSubmit={handleSubmit} encType='multipart/form-data'>

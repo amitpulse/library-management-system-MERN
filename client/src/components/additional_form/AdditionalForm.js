@@ -6,7 +6,7 @@ import axios from "axios";
 const AdditionalForm = () => {
   const fetchUser = JSON.parse(localStorage.getItem("user"));
   const userid = fetchUser.user._id;
-
+  
   const [readInput, setReadInput] = useState(true);
   const [isDisabled, setIsDisabled] = useState(true);
   const [extraDetails, setExtraDetails] = useState("");
@@ -75,7 +75,7 @@ const AdditionalForm = () => {
         console.log(newDetails);
       });
 
-    // getExtraDetails();
+    getExtraDetails();
     // console.log(newDetails)
   };
 

@@ -54,6 +54,11 @@ const userSchema = new Schema({
     type: String,
     default: "",
   },
+  testImage:{
+    data: Buffer,
+    contentType: String,
+  
+  }
 });
 
 //  static signup

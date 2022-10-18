@@ -10,9 +10,8 @@ const bookRoutes = require('./routes/bookroute')
 
 // importing user routes
 const userRoutes = require('./routes/userRoute')
-// const userInfoRoutes = require('./routes/userInfoRoutes')
 const historyRoute = require('./routes/historyRoute')
-const imageRoute = require('./routes/uploadRoute')
+// const imageRoute = require('./routes/uploadRoute')
 
 const app = express();
 
@@ -36,10 +35,9 @@ app.use((req, res, next) => {
 // this is the endpoint
 app.use('/api/books', bookRoutes) 
 app.use('/api/user', userRoutes)
-// app.use('/api/userinfo', userInfoRoutes)
 app.use('/api/history', historyRoute)
-app.use('/api/image', imageRoute)
 
+// app.use('/api/image', imageRoute)
 
 // connect to mongoDB
 mongoose.connect(process.env.MONGO_URI)

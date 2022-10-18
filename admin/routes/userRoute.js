@@ -4,6 +4,7 @@ const router = express.Router();
 
 // user controllers
 const {loginUser, signupUser, updateAdditionalInfo, getSingleUser} = require('../controllers/userController');
+const {getImage,  postImage} = require('../controllers/imageController')
 
 
 router.post('/login', loginUser)
@@ -16,6 +17,8 @@ router.get('/login/:id', getSingleUser)
 router.patch('/login/:id', updateAdditionalInfo)
 // login route
 
-// router.post('/extrainfo', createInfo)
+router.get("/login/upload/:id", getImage);
+
+router.patch('/login/upload/:id', postImage);
 
 module.exports = router;

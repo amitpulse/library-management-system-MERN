@@ -44,7 +44,6 @@ const getImage = async (req, res) =>{
 
     const downloadImage = await uploadModel.find()
     res.json(downloadImage)
-    // res.send("got the image")
     }
     
 
