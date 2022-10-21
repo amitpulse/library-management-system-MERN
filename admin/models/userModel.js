@@ -56,7 +56,7 @@ const userSchema = new Schema({
   },
   testImage:{
     data: Buffer,
-    contentType: String,
+    contentType: String
   
   }
 });

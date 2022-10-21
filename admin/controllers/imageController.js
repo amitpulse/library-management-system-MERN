@@ -14,7 +14,7 @@ const Storage = multer.diskStorage({
     }
 });
 
-// 
+//  
 
 const fileFilter=(req,file,cb)=>{
     const allowedFileTypes=['image/jpeg','image/jpg','image/png'];
@@ -27,14 +27,7 @@ const fileFilter=(req,file,cb)=>{
 }
 
 
-// /////////////////
-const getImage = async(req,res) => {
-    const {id} = req.params;
-   const downloadImage=await User.findById(id)
-   res.send(downloadImage)
-}
-
-// 
+// upload image
 const upload = multer({storage:Storage,fileFilter}).single('photo')
 
 const postImage = async (req, res) =>{
@@ -60,6 +53,15 @@ const postImage = async (req, res) =>{
         }
     })
 }
+
+
+// get uploaded image
+const getImage = async(req,res) => {
+    const {id} = req.params;
+   const downloadImage=await User.findById(id).select('testImage')
+   res.send(downloadImage)
+}
+
 
 
 module.exports = {

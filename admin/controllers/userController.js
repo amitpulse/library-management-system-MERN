@@ -1,9 +1,7 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
+
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "1d" });

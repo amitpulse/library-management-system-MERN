@@ -31,7 +31,6 @@ const Books = () => {
 
       fetchBooks()
     }
-
   })
 
   return (

@@ -23,9 +23,9 @@ useEffect(() => {
         <Router>
           <Routes>
             <Route path='/' element={user ? <Home/> : <Navigate to="/login" />}/>
-            <Route path='/login' element={!user ? <LogReg/> : <Navigate to="/" />}/>
-            <Route path='/books' element={user ? <Books/> : <Navigate to="/login"/>}/>
-            <Route path='/history' element={user ? <BookHistory/> : <Navigate to="/login"/>}/>
+            <Route path='login' element={!user ? <LogReg/> : <Navigate to="/" />}/>
+            <Route path='books' element={user ? <Books/> : <Navigate to="/login"/>}/>
+            <Route path='history' element={user ? <BookHistory/> : <Navigate to="/login"/>}/>
        
           </Routes>
         </Router>
