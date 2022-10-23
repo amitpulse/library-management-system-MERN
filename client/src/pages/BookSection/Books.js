@@ -3,7 +3,6 @@ import BookDetails from "../../components/bookdetails/BookDetails";
 import Bookform from "../../components/bookform/Bookform";
 import Navbar from "../../components/navbar/Navbar";
 import '../BookSection/Books.css'
-// import axios from 'axios';
 import { useBookContext } from "../../hooks/useBookContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
@@ -31,7 +30,7 @@ const Books = () => {
 
       fetchBooks()
     }
-  })
+  }, [user, dispatch])
 
   return (
     <div className="books-section">
