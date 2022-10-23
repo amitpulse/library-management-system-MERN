@@ -17,13 +17,14 @@ const app = express();
 
 const port = process.env.PORT;
 
+app.get('/', (req, res)=>{
+  res.send("Server Connected")
+
+})
 
 //middleware
 app.use(express.json());
-
 app.use(cors());
-
-
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
