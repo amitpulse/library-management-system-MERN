@@ -30,7 +30,7 @@ const LoginForm = () => {
          <input type="password" placeholder='Password'  onChange={(e) => setPassword(e.target.value)} value={password}/><br />
          {error && <div className='error-login'>{error}</div>}
          <button  disabled={isLoading}>Log In</button>
-        <p>Not a member? <Link><strong>Register</strong></Link></p>
+        {/* <p>Not a member? <Link><strong>Register</strong></Link></p> */}
         </form>
        
       

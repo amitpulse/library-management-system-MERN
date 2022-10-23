@@ -42,7 +42,7 @@ const RegisterForm = () => {
 
             <button disabled={isLoading}>Register</button>
          
-            <p>Already a member? <Link><strong>Log In</strong></Link></p>
+            {/* <p>Already a member? <Link><strong>Log In</strong></Link></p> */}
            
         </form>
         
