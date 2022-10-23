@@ -17,10 +17,6 @@ const app = express();
 
 const port = process.env.PORT || 4400;
 
-app.get('/', (req, res)=>{
-  res.send("Server Connected")
-
-})
 
 //middleware
 app.use(express.json());
