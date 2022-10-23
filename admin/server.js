@@ -15,7 +15,7 @@ const historyRoute = require('./routes/historyRoute')
 
 const app = express();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 4500;
 
 app.get('/', (req, res)=>{
   res.send("Server Connected")
