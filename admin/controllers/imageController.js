@@ -57,9 +57,17 @@ const postImage = async (req, res) =>{
 
 // get uploaded image
 const getImage = async(req,res) => {
+
     const {id} = req.params;
-   const downloadImage=await User.findById(id).select('testImage')
-   res.send(downloadImage)
+    const downloadImage=await User.findById(id).select('testImage')
+    res.status(201).json(downloadImage)
+    // try{
+
+    // }
+    // catch{
+    //     return res.status(404).json({ error: "Image not uploaded" });
+    // }
+        
 }
 
 

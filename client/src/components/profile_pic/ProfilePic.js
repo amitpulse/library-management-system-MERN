@@ -7,7 +7,6 @@ import axios from 'axios'
 const ProfilePic = () => {
     const fetchUser = JSON.parse(localStorage.getItem("user"));
     const userid = fetchUser.user._id;
-
     const {user} = useAuthContext();
     const [userProfilePic, setUserProfilePic] = useState({}); // post
 
@@ -16,18 +15,19 @@ const ProfilePic = () => {
     //------------------------- get image function --------------------------------
     const getImageData = async () => {
       await axios
-     .get(`http://localhost:4400/api/user/login/upload/${userid}`)
-     .then((res) =>{
-      const userPhoto = res.data.testImage;
-      console.log(userPhoto);
-
-      const bufferString = `data:${userPhoto.contentType};base64, ${Buffer.from(userPhoto.data).toString('base64')}`
-      setUserProfilePic(bufferString);
-      console.log(bufferString);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+        .get(`http://localhost:4400/api/user/login/upload/${userid}`)
+        .then((res) => {
+          const userPhoto = res.data.testImage;
+          console.log(userPhoto);
+          setUserProfilePic(userPhoto);
+          const bufferString = `data:${userPhoto.contentType};base64, ${Buffer.from(userPhoto.data).toString("base64")}`;
+          setUserProfilePic(bufferString);
+          console.table(bufferString)
+          // localStorage.setItem("testImage", JSON.stringify(bufferString));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
 
     // ----------UPLOAD ---------------
@@ -65,22 +65,24 @@ const ProfilePic = () => {
 
   // ----------------------- GET IMAGE -----------------------------
 
-const [profileImg, setProfileImg] = useState('') 
+// const [profileImg, setProfileImg] = useState('') 
 useEffect(() =>{
   const base64String = btoa(String.fromCharCode.apply(new Uint8Array(fetchUser.user.testImage)));
+  
+  // setProfileImg(base64String)
+  console.log(base64String)
   getImageData()
-  setProfileImg(base64String)
   // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
-
 
 
   return (
     <div className='image-container'>
       <div className="user-image">
         <img ng-src={userProfilePic} alt="profile pic" />
-        {/* <img ng-src={`data:image/png;base64,${userProfilePic}`} alt="profile pic" /> */}
+       
       </div>
+      {error && <div className='img-error'>{error}</div>}
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <input
