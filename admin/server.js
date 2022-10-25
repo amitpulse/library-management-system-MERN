@@ -20,6 +20,7 @@ const port = process.env.PORT || 4400;
 
 //middleware
 app.use(express.json());
+
 app.use(cors());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
