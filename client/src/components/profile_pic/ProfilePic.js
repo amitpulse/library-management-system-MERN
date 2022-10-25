@@ -63,16 +63,12 @@ const ProfilePic = () => {
         });
     };
 
-  // -------------GET IMAGE --------------
+  // ----------------------- GET IMAGE -----------------------------
 
 const [profileImg, setProfileImg] = useState('') 
 useEffect(() =>{
-
-  const base64String = btoa(
-    String.fromCharCode.apply(new Uint8Array(fetchUser.user.testImage))
-    
-    );
-    getImageData()
+  const base64String = btoa(String.fromCharCode.apply(new Uint8Array(fetchUser.user.testImage)));
+  getImageData()
   setProfileImg(base64String)
   // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
